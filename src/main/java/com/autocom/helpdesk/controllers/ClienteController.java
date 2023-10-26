@@ -58,6 +58,7 @@ public class ClienteController {
             if (UploadUtil.fazerUploadImagem(imagem)) {
                 cliente.setImagem(imagem.getOriginalFilename()); // Armazenando o caminho da imagem, e não a imagem
             }
+            cliente.setNome(cliente.getNome().toUpperCase());
             clienteRepository.save(cliente);
             System.out.println("Salvo com sucesso: " + cliente.getNome() + cliente.getImagem());
             return home(1);

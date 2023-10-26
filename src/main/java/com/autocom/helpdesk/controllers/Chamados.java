@@ -63,12 +63,14 @@ public class Chamados {
             mv.addObject("tickets", chamado);
             mv.addObject("listaClientes", clienteRepository.findAll());
             return mv;
-        } else {
+        }
+        chamado.setObservacao(chamado.getObservacao().toUpperCase());
+        chamado.setTitulo(chamado.getObservacao().toUpperCase());
             chamadoRepository.save(chamado);
             return chamadoHome(1);
         }
-    }
-
-
-
 }
+
+
+
+

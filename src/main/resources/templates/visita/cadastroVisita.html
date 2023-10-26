@@ -35,16 +35,25 @@
 
                         <!-- Dados do Visitante -->
                         <div class="form-group col-4">
+                            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('nomeVisitante')}" >
+                                <span class="validation-message" th:errors="*{nomeVisitante}"></span>
+                            </div>
                             <label for="nome" class="lblCliente">VENDEDOR AUTOCOM:</label>
                             <input type="text" th:field="*{nomeVisitante}" class="form-control" autocomplete="off" id="nome" placeholder="Visitante">
                         </div>
 
                         <div class="form-group col-4">
+                            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('nomeEmpresa')}" >
+                                <span class="validation-message" th:errors="*{nomeEmpresa}"></span>
+                            </div>
                             <label for="empresa" class="lblCliente">NOME DA EMPRESA:</label>
                             <input type="text" th:field="*{nomeEmpresa}" class="form-control" autocomplete="off" id="empresa" placeholder="Nome da Empresa">
                         </div>
 
                         <div class="form-group col-4">
+                            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('endereco')}" >
+                                <span class="validation-message" th:errors="*{endereco}"></span>
+                            </div>
                             <label for="endereco" class="lblCliente">ENDEREÇO:</label>
                             <input type="text" th:field="*{endereco}" class="form-control" autocomplete="off" id="endereco" placeholder="Endereço">
                         </div>
@@ -54,21 +63,34 @@
                                 <option th:each="bairro : ${listaBairro}" th:value="${bairro.id}" th:text="${bairro.nomeBairro}"></option>
                             </select>
                         </div>
+
                         <div class="form-group col-4">
+                            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('contato')}" >
+                                <span class="validation-message" th:errors="*{contato}"></span>
+                            </div>
                             <label for="contato" class="lblCliente">NOME DO CONTATO:</label>
                             <input type="text" th:field="*{contato}" class="form-control" autocomplete="off" id="contato" placeholder="Contato">
                         </div>
 
                         <div class="form-group col-4">
+                            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('telefone')}" >
+                                <span class="validation-message" th:errors="*{telefone}"></span>
+                            </div>
                             <label for="telefone" class="lblCliente">TELEFONE:</label>
                             <input type="text" th:field="*{telefone}" class="form-control" autocomplete="off" id="telefone" placeholder="Telefone">
                         </div>
 
                         <div class="form-group col-12">
+                            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('email')}" >
+                                <span class="validation-message" th:errors="*{email}"></span>
+                            </div>
                             <label for="email" class="lblCliente">E-MAIL:</label>
                             <input type="email" th:field="*{email}" class="form-control" autocomplete="off" id="email" placeholder="E-mail">
                         </div>
                         <div class="form-group col-8">
+                            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('informacao')}" >
+                                <span class="validation-message" th:errors="*{informacao}"></span>
+                            </div>
                             <label for="informacao" class="lblCliente">DESCRIÇÃO DA VISITA:</label>
                             <textarea th:field="*{informacao}" class="form-control" rows="5" id="informacao" placeholder="Informação sobre a visita"></textarea>
                         </div>
@@ -130,6 +152,9 @@
                         </div>
 
                         <div class="form-group col-4">
+                            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('dataRetorno')}" >
+                                <span class="validation-message" th:errors="*{dataRetorno}"></span>
+                            </div>
                             <label for="dataRetorno" class="lblCliente">RETORNO:</label>
                             <input type="text" th:field="*{dataRetorno}" class="form-control" autocomplete="off" id="dataRetorno" placeholder="Data do Retorno exemplo 25-10-23">
                         </div>

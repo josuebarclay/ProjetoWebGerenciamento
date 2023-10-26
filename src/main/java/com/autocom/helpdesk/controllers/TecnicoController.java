@@ -57,6 +57,7 @@ public class TecnicoController {
             if (UploadUtil.fazerUploadImagem(imagem)) {
                 tecnico.setImagem(imagem.getOriginalFilename()); // Armazenando o caminho da imagem, e não a imagem
             }
+            tecnico.setNome(tecnico.getNome().toUpperCase());
             tecnicoRepository.save(tecnico);
             System.out.println("Salvo com sucesso: " + tecnico.getNome() + tecnico.getImagem());
             return home(1);

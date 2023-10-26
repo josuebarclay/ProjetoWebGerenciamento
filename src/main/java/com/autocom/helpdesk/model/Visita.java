@@ -3,6 +3,10 @@ package com.autocom.helpdesk.model;
 import com.autocom.helpdesk.enums.SimNao;
 import com.autocom.helpdesk.enums.StatusVisita;
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 
 
@@ -13,23 +17,45 @@ public class Visita {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotNull(message = "A data da visita não pode estar vazia")
     private LocalDate dataVisita = LocalDate.now();
+
+    @NotBlank(message = "O nome do visitante não pode estar em branco")
     private String nomeVisitante;
+
+    @NotBlank(message = "O nome da empresa não pode estar em branco")
     private String nomeEmpresa;
+
+    @NotBlank(message = "O endereço não pode estar em branco")
     private String endereco;
+
+    @NotBlank(message = "O contato não pode estar em branco")
     private String contato;
+
+    @Pattern(regexp = "^[0-9\\s]+$", message = "O telefone deve conter apenas dígitos e espaços")
     private String telefone;
+
+    @Email(message = "Informe um endereço de e-mail válido")
     private String email;
+
+    @NotNull(message = "O status da visita não pode estar vazio")
     private String informacao; //Descreva a visita em detalhes, incluindo o que aconteceu durante a reunião. Isso pode envolver discussões sobre produtos, serviços, preços, termos contratuais, resolução de problemas ou qualquer outra interação significativa.
+
+    @NotNull(message = "O status da visita não pode estar vazio")
     private SimNao temSistema;
     private String motivo;
     private String nomeEmpresaAutomacao;
+
+    @NotNull(message = "O status da visita não pode estar vazio")
     private String qualSistema;
     private String tempodoSistema;
     private SimNao satisfacao; //satisfeito com o sistema
     private SimNao suporte; //satisfeito com o suporte
     private SimNao cartao;
     private String recebimento; //qual o tipo do recebimento
+
+    @NotNull(message = "O status da visita não pode estar vazio")
     private String dataRetorno;
     private StatusVisita statusVisita;
 
