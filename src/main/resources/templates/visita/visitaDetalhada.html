@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head :: headImports}"></head>
+<style>
+    .lblCliente{font-weight: bold;}
+</style>
+<body>
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav th:replace="~{fragments/navbar :: navbarImports}"></nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
+        <nav th:replace="~{fragments/sidebar :: sidebarImports}"></nav>
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+
+                <!-- cabeçalho boas vindas -->
+                <div class="row">
+                    <div class="col-md-12 grid-margin">
+                        <div class="row">
+                            <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                                <h3 class="font-weight-bold">Listagem de Visitas</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- conteúdo principal -->
+                <div class="row">
+                    <div class="col-md-12 grid-margin stretch-card">
+                        <div class="card table-bg">
+                            <div class="card-people mt-auto">
+                                <h4 class="m-4">Visitas cadastradas no sistema</h4>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="font-weight-bold">VISITANTE:</label>
+                                                <p th:each="visita : ${visita}" th:text="${visita.nomeVisitante}" class="form-control"></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold">EMPRESA:</label>
+                                                <p th:each="visita : ${visita}" th:text="${visita.nomeEmpresa}" class="form-control"></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold">CONTATO:</label>
+                                                <p th:each="visita : ${visita}" th:text="${visita.contato}" class="form-control"></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold">E-MAIL:</label>
+                                                <p th:each="visita : ${visita}" th:text="${visita.email}" class="form-control"></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="font-weight-bold">DATA DA VISITA:</label>
+                                                <p th:each="visita : ${visita}" th:text="${visita.dataVisita}" class="form-control"></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold">ENDEREÇO:</label>
+                                                <p th:each="visita : ${visita}" th:text="${visita.endereco}" class="form-control"></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold">TELEFONE:</label>
+                                                <p th:each="visita : ${visita}" th:text="${visita.telefone}" class="form-control"></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold">BAIRRO:</label>
+                                                <p th:each="visita : ${visita}" th:text="${visita.bairro.nomeBairro}" class="form-control"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="font-weight-bold">EMPRESA DE AUTOMAÇÃO:</label>
+                                                <p th:each="visita : ${visita}" th:text="${visita.nomeEmpresaAutomacao}" class="form-control"></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold">TEM SISTEMA:</label>
+                                                <p th:each="visita : ${visita}" th:text="${visita.temSistema}" class="form-control"></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="font-weight-bold">MOTIVO:</label>
+                                                <p th:each="visita : ${visita}" th:text="${visita.motivo}" class="form-control"></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold">QUAL SISTEMA:</label>
+                                                <p th:each="visita : ${visita}" th:text="${visita.qualSistema}" class="form-control"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="font-weight-bold">TEMPO QUE POSSUI O SISTEMA:</label>
+                                                <p th:each="visita : ${visita}" th:text="${visita.tempodoSistema}" class="form-control"></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold">TEM SUPORTE:</label>
+                                                <p th:each="visita : ${visita}" th:text="${visita.suporte}" class="form-control"></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="font-weight-bold">ESTÁ SATISFEITO COM O SISTEMA:</label>
+                                                <p th:each="visita : ${visita}" th:text="${visita.satisfacao}" class="form-control"></p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="font-weight-bold">POSSUI RECEBIMENTO DE CARTÃO:</label>
+                                                <p th:each="visita : ${visita}" th:text="${visita.cartao}" class="form-control"></p>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="font-weight-bold">QUAL O TIPO DE RECEBIMENTO:</label>
+                                                <p th:each="visita : ${visita}" th:text="${visita.recebimento}" class="form-control"></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="font-weight-bold">ULTIMO RETORNO:</label>
+                                                <p th:each="visita : ${visita}" th:text="${visita.dataRetorno}" class="form-control"></p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="font-weight-bold">STATUS:</label>
+                                                <p th:each="visita : ${visita}" th:text="${visita.statusVisita}" class="form-control"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <label class="font-weight-bold">DESCRIÇÃO:</label>
+                                            <p th:each="visita : ${visita}" th:text="${visita.informacao}" class="form-control"></p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                            </div>
+                    </div>
+                    <div class="col-md-12 grid-margin transparent">
+                        <!-- conteudo indefinido -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--        <div th:replace="~{fragments/modal :: modalEdit}"></div>-->
+
+        <!-- plugins:js -->
+        <script src="/vendors/js/vendor.bundle.base.js"></script>
+        <!-- End plugin js for this page -->
+        <!-- inject:js -->
+        <script src="/js/off-canvas.js"></script>
+        <script src="/js/template.js"></script>
+        <script src="/js/hoverable-collapse.js"></script>
+        <!-- endinject -->
+        <!-- Custom js for this page-->
+        <script src="/js/dashboard.js"></script>
+        <!-- End custom js for this page-->
+
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
   <head th:replace="~{fragments/head :: headImports}"></head>
 <body>
@@ -19,7 +19,7 @@
             <div class="col-md-12 grid-margin">
               <div class="row">
                 <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                  <h3 class="font-weight-bold">Seja Bem-Vindo(a), <span>Nameuser</span> </h3>
+                  <h3 class="font-weight-bold">Seja Bem-Vindo(a), <span th:text="${#authentication.getPrincipal().getNome()}"></span> </h3>
                 </div>
               </div>
             </div>
@@ -32,42 +32,48 @@
                   <h4 class="m-4">Últimos chamados inseridos</h4>
                   <table class="table table-striped">
                     <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Data de Abertura</th>
-                        <th scope="col">Titulo do Chamado</th>
-                        <th scope="col">Observação do Chamado</th>
-                        <th scope="col">Prioridade</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Técnico Responsável</th>
-                      </tr>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Data de Abertura</th>
+                      <th scope="col">Cliente</th>
+                      <th scope="col">Título do Chamado</th>
+                      <th scope="col">Observação do Chamado</th>
+                      <th scope="col">Prioridade</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Técnico Responsável</th>
+                    </tr>
                     </thead>
                     <tbody>
-                      <tr th:each="chamados : ${chamadosList}">
-                        <td th:text="${chamados.id}"></td>
-                        <td th:text="${chamados.dataAbertura}"></td>
-                        <td th:text="${chamados.titulo}"></td>
-                        <td th:text="${chamados.observacao}"></td>
-                        <td th:text="${chamados.prioridade}"></td>
-                        <td th:text="${chamados.status}"></td>
-                        <td th:text="${chamados.tecnico.nome}"></td>
-                      </tr>
-                      
+                    <tr th:each="chamado : ${chamadosList}">
+                      <td th:text="${chamado.id}"></td>
+                      <td th:text="${chamado.dataAbertura}"></td>
+                      <td th:text="${chamado.cliente.nome}"></td>
+                      <td th:text="${chamado.titulo}"></td>
+                      <td th:text="${chamado.observacao}"></td>
+                      <td th:text="${chamado.prioridade}"></td>
+                      <td th:text="${chamado.status}"></td>
+                      <td th:text="${chamado.tecnico.nome}"></td>
+                    </tr>
                     </tbody>
                   </table>
+
                   <!-- paginação da tabela -->
                   <nav class="m-4">
                     <ul class="pagination">
-                      <li class="page-item disabled">
-                        <a class="page-link">Previous</a>
+                      <li class="page-item" th:classappend="${chamadosList.first ? 'disabled' : ''}">
+                        <a class="page-link" th:if="${!chamadosList.first}" th:href="@{/(page=1)}">First</a>
                       </li>
-                      <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item " aria-current="page">
-                        <a class="page-link" href="#">2</a>
+                      <li class="page-item" th:classappend="${chamadosList.first ? 'disabled' : ''}">
+                        <a class="page-link" th:if="${!chamadosList.first}" th:href="@{/(page=${chamadosList.number - 1})}">Previous</a>
                       </li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
+                      <li class="page-item" th:each="i : ${#numbers.sequence(1, chamadosList.totalPages)}" th:classappend="${i == chamadosList.number + 1 ? 'active' : ''}">
+                        <a class="page-link" th:text="${i}" th:href="@{/(page=${i})}"></a>
+                      </li>
+                      <li class="page-item" th:classappend="${chamadosList.last ? 'disabled' : ''}">
+                        <a class="page-link" th:if="${!chamadosList.last}" th:href="@{/(page=${chamadosList.number + 1})}">Next</a>
+                      </li>
+                      <li class="page-item" th:classappend="${chamadosList.last ? 'disabled' : ''}">
+                        <a class="page-link" th:if="${!chamadosList.last}" th:href="@{/(page=${chamadosList.totalPages})}">Last</a>
                       </li>
                     </ul>
                   </nav>
@@ -83,10 +89,7 @@
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2022 - Jamerson Souza </span>
-          </div>
-          <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved. <a href="https://www.themewagon.com/" target="_blank">Distributed by Themewagon</a></span> 
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2023 - Autocom Automação Comercial </span>
           </div>
         </footer> 
         <!-- partial -->
@@ -98,15 +101,15 @@
   <!-- container-scroller -->
 
   <!-- plugins:js -->
-  <script src="vendors/js/vendor.bundle.base.js"></script>
+  <script src="/vendors/js/vendor.bundle.base.js"></script>
   <!-- End plugin js for this page -->
   <!-- inject:js -->
-  <script src="js/off-canvas.js"></script>
-  <script src="js/template.js"></script>
-  <script src="js/hoverable-collapse.js"></script>
+  <script src="/js/off-canvas.js"></script>
+  <script src="/js/template.js"></script>
+  <script src="/js/hoverable-collapse.js"></script>
   <!-- endinject -->
   <!-- Custom js for this page-->
-  <script src="js/dashboard.js"></script>
+  <script src="/js/dashboard.js"></script>
   <!-- End custom js for this page-->
 </body>
 

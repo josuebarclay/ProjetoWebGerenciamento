@@ -512,7 +512,7 @@ declare type UploadHandler = (blobInfo: BlobInfo, success: (url: string) => void
 interface UploadResult {
     url: string;
     blobInfo: BlobInfo;
-    status: boolean;
+    statusTicket: boolean;
     error?: {
         options: UploadFailureOptions;
         message: string;
@@ -1323,7 +1323,7 @@ declare type FilePickerValidationCallback = (info: {
     type: string;
     url: string;
 }, callback: (validation: {
-    status: FilePickerValidationStatus;
+    statusTicket: FilePickerValidationStatus;
     message: string;
 }) => void) => void;
 declare type URLConverter = (url: string, name: string, elm?: HTMLElement) => string;
@@ -2256,7 +2256,7 @@ interface EditorObservable extends Observable<EditorEventMap> {
 }
 interface UploadResult$1 {
     element: HTMLImageElement;
-    status: boolean;
+    statusTicket: boolean;
     blobInfo: BlobInfo;
     uploadUri: string;
 }

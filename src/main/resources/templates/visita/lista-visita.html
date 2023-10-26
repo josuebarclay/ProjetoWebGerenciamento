@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head :: headImports}"></head>
+<style>
+    .lblCliente{font-weight: bold;}
+</style>
+<body>
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav th:replace="~{fragments/navbar :: navbarImports}"></nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
+        <nav th:replace="~{fragments/sidebar :: sidebarImports}"></nav>
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+
+                <!-- cabeçalho boas vindas -->
+                <div class="row">
+                    <div class="col-md-12 grid-margin">
+                        <div class="row">
+                            <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                                <h3 class="font-weight-bold">Listagem de Visitas</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- conteúdo principal -->
+                <div class="row">
+                    <div class="col-md-12 grid-margin stretch-card">
+                        <div class="card table-bg">
+                            <div class="card-people mt-auto">
+                                <h4 class="m-4">Visitas cadastradas no sistema</h4>
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">DATA DA VISITA</th>
+                                        <th scope="col">VISITA</th>
+                                        <th scope="col">NOME DA EMPRESA</th>
+                                        <th scope="col">AÇÃO</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="visita : ${visitas}">
+                                        <td th:text="${visita.id}"></td>
+                                        <td th:text="${visita.dataVisita}"></td>
+                                        <td th:text="${visita.nomeVisitante}"></td>
+                                        <td th:text="${visita.nomeEmpresa}"></td>
+                                        <td><a class="btn btn-dark" th:href="@{visualizar/{id}(id=${visita.id})}">VISUALIZAR</a></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <nav class="m-4">
+                                    <ul class="pagination">
+                                        <li class="page-item disabled">
+                                            <a class="page-link">Previous</a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item " aria-current="page">
+                                            <a class="page-link" href="#">2</a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#">Next</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 grid-margin transparent">
+                        <!-- conteudo indefinido -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--        <div th:replace="~{fragments/modal :: modalEdit}"></div>-->
+
+        <!-- plugins:js -->
+        <script src="/vendors/js/vendor.bundle.base.js"></script>
+        <!-- End plugin js for this page -->
+        <!-- inject:js -->
+        <script src="/js/off-canvas.js"></script>
+        <script src="/js/template.js"></script>
+        <script src="/js/hoverable-collapse.js"></script>
+        <!-- endinject -->
+        <!-- Custom js for this page-->
+        <script src="/js/dashboard.js"></script>
+        <!-- End custom js for this page-->
+
+
+</body>
+</html>

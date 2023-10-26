@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head :: headImports}"></head>
+<style>
+    .lblCliente{font-weight: bold;}
+</style>
+<body>
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav th:replace="~{fragments/navbar :: navbarImports}"></nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
+        <nav th:replace="~{fragments/sidebar :: sidebarImports}"></nav>
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+
+                <!-- cabeçalho boas vindas -->
+                <div class="row">
+                    <div class="col-md-12 grid-margin">
+                        <div class="row">
+                            <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                                <h3 class="font-weight-bold">Detalhamento</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- conteúdo principal -->
+                <form method="post" th:action="@{/visita/salvarvisita}" th:object="${visita}" enctype="multipart/form-data">
+                    <div class="row">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+                        <!-- Dados do Visitante -->
+                        <div class="form-group col-4">
+                            <label for="nome" class="lblCliente">VENDEDOR AUTOCOM:</label>
+                            <input type="text" th:field="*{nomeVisitante}" class="form-control" autocomplete="off" id="nome" placeholder="Visitante">
+                        </div>
+
+                        <div class="form-group col-4">
+                            <label for="empresa" class="lblCliente">NOME DA EMPRESA:</label>
+                            <input type="text" th:field="*{nomeEmpresa}" class="form-control" autocomplete="off" id="empresa" placeholder="Nome da Empresa">
+                        </div>
+
+                        <div class="form-group col-4">
+                            <label for="endereco" class="lblCliente">ENDEREÇO:</label>
+                            <input type="text" th:field="*{endereco}" class="form-control" autocomplete="off" id="endereco" placeholder="Endereço">
+                        </div>
+                        <div class="form-group col-4">
+                            <label class="lblCliente">BAIRRO</label>
+                            <select class="form-control" th:field="*{bairro}">
+                                <option th:each="bairro : ${listaBairro}" th:value="${bairro.id}" th:text="${bairro.nomeBairro}"></option>
+                            </select>
+                        </div>
+                        <div class="form-group col-4">
+                            <label for="contato" class="lblCliente">NOME DO CONTATO:</label>
+                            <input type="text" th:field="*{contato}" class="form-control" autocomplete="off" id="contato" placeholder="Contato">
+                        </div>
+
+                        <div class="form-group col-4">
+                            <label for="telefone" class="lblCliente">TELEFONE:</label>
+                            <input type="text" th:field="*{telefone}" class="form-control" autocomplete="off" id="telefone" placeholder="Telefone">
+                        </div>
+
+                        <div class="form-group col-12">
+                            <label for="email" class="lblCliente">E-MAIL:</label>
+                            <input type="email" th:field="*{email}" class="form-control" autocomplete="off" id="email" placeholder="E-mail">
+                        </div>
+                        <div class="form-group col-8">
+                            <label for="informacao" class="lblCliente">DESCRIÇÃO DA VISITA:</label>
+                            <textarea th:field="*{informacao}" class="form-control" rows="5" id="informacao" placeholder="Informação sobre a visita"></textarea>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-4">
+                            <label for="temSistema">TEM SISTEMA DE AUTOMAÇÃO:</label>
+                            <select class="form-control" id="temSistema" name="temSistema" th:field="*{temSistema}">
+                                <option th:each="visita : ${sim}" th:value="${visita}" th:text="${visita}"></option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-4">
+                            <label for="motivo" class="lblCliente">MOTIVO:</label>
+                            <input type="text" th:field="*{motivo}" class="form-control" autocomplete="off" id="motivo" placeholder="Motivo">
+                        </div>
+
+                        <div class="form-group col-4">
+                            <label for="Automacao" class="lblCliente">NOME DA EMPRESA DE AUTOMAÇÃO:</label>
+                            <input type="text" th:field="*{nomeEmpresaAutomacao}" class="form-control" autocomplete="off" id="Automacao" placeholder="Nome Empresa de Automação">
+                        </div>
+
+                        <div class="form-group col-4">
+                            <label for="Sistema" class="lblCliente">QUAL TIPO DO SISTEMA:</label>
+                            <input type="text" th:field="*{qualSistema}" class="form-control" autocomplete="off" id="Sistema" placeholder="Qual Sistema utiliza (ECF, NFe, NFCe, outros)">
+                        </div>
+
+                        <div class="form-group col-4">
+                            <label for="tempodoSistema" class="lblCliente">QUANTO TEMPO TEM O SISTEMA:</label>
+                            <input type="text" th:field="*{tempodoSistema}" class="form-control" autocomplete="off" id="tempodoSistema" placeholder="Há quanto tempo utiliza">
+                        </div>
+
+                        <div class="form-group col-4">
+                            <label for="satisfacao" class="lblCliente">SATISFAÇÃO COM O SISTEMA:</label>
+                            <select class="form-control" id="satisfacao" name="satisfacao" th:field="*{satisfacao}">
+                                <option th:each="visita : ${sim}" th:value="${visita}" th:text="${visita}"></option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-4">
+                            <label for="suporte" class="lblCliente">TEM SUPORTE?</label>
+                            <select class="form-control" id="suporte" name="suporte" th:field="*{suporte}">
+                                <option th:each="visita : ${sim}" th:value="${visita}" th:text="${visita}"></option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-4">
+                            <label for="cartao" class="lblCliente">POSSUI RECEBIMENTO DE CARTÃO:</label>
+                            <select class="form-control" id="cartao" name="cartao" th:field="*{cartao}">
+                                <option th:each="visita : ${sim}" th:value="${visita}" th:text="${visita}"></option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-4">
+                            <label for="recebimento" class="lblCliente">TIPO DO RECEBIMENTO:</label>
+                            <input type="text" th:field="*{recebimento}" class="form-control" autocomplete="off" id="recebimento" placeholder="Qual tipo de recebimento? TEF, POS, outros">
+                        </div>
+
+                        <div class="form-group col-4">
+                            <label for="dataRetorno" class="lblCliente">RETORNO:</label>
+                            <input type="text" th:field="*{dataRetorno}" class="form-control" autocomplete="off" id="dataRetorno" placeholder="Data do Retorno exemplo 25-10-23">
+                        </div>
+
+                        <div class="form-group col-4">
+                            <label for="statusVisita" class="lblCliente">STATUS DA VISITA:</label>
+                            <select class="form-control" id="statusVisita" name="statusVisita" th:field="*{statusVisita}">
+                                <option th:each="visita : ${statusVisita}" th:value="${visita}" th:text="${visita.getVisitaStatus()}"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-rounded mt-4">SALVAR INFORMAÇÕES</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

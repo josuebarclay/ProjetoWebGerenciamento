@@ -571,7 +571,7 @@ Version 5.0.4 (2019-04-23)
     Removed redundant mobile wrapper #TINY-3480
 Version 5.0.3 (2019-03-19)
     Changed empty nested-menu items within the style formats menu to be disabled or hidden if the value of `style_formats_autohide` is `true` #TINY-3310
-    Changed the entire phrase 'Powered by Tiny' in the status bar to be a link instead of just the word 'Tiny' #TINY-3366
+    Changed the entire phrase 'Powered by Tiny' in the statusTicket bar to be a link instead of just the word 'Tiny' #TINY-3366
     Changed `formatselect`, `styleselect` and `align` menus to use the `mceToggleFormat` command internally #TINY-3428
     Fixed toolbar keyboard navigation to work as expected when `toolbar_drawer` is configured #TINY-3432
     Fixed text direction buttons to display the correct pressed state in selections that have no explicit `dir` property #TINY-3138
@@ -604,7 +604,7 @@ Version 5.0.2 (2019-03-05)
     Fixed an issue where backspace/delete keys after/before pagebreak elements wouldn't move the caret #TINY-3097
     Fixed an issue in the table plugin where menu items and toolbar buttons weren't showing correctly based on the selection #TINY-3423
     Fixed inconsistent button focus styles in Firefox #TINY-3377
-    Fixed the resize icon floating left when all status bar elements were disabled #TINY-3340
+    Fixed the resize icon floating left when all statusTicket bar elements were disabled #TINY-3340
     Fixed the resize handle to not show in fullscreen mode #TINY-3404
 Version 5.0.1 (2019-02-21)
     Removed paste as text notification banner and paste_plaintext_inform setting #POW-102
@@ -698,7 +698,7 @@ Version 5.0.0-preview-4 (2018-11-12)
     Fixed context menu not appearing when clicking an image with a caption #AP-382
     Fixed directionality of UI when using an RTL language #AP-423
     Fixed page responsiveness with multiple inline editors #AP-430
-    Added the ability to keyboard navigate through menus, toolbars, sidebar and the status bar sequentially #AP-381
+    Added the ability to keyboard navigate through menus, toolbars, sidebar and the statusTicket bar sequentially #AP-381
     Fixed empty toolbar groups appearing through invalid configuration of the `toolbar` property #AP-450
     Fixed text not being retained when updating links through the link dialog #AP-293
     Added translation capability back to the editor's UI #AP-282
@@ -737,7 +737,7 @@ Version 5.0.0-preview-2 (2018-10-10)
     Removed `colorpicker` plugin, it is now in the theme #AP-328
     Removed `textcolor` plugin, it is now in the theme #AP-328
     Fixed styleselect not updating the displayed item as the cursor moved #AP-388
-    Changed `height` configuration to apply to the editor frame (including menubar, toolbar, status bar) instead of the content area #AP-324
+    Changed `height` configuration to apply to the editor frame (including menubar, toolbar, statusTicket bar) instead of the content area #AP-324
     Added fontformats and fontsizes menu items #AP-390
     Fixed preview iframe not expanding to the dialog size #AP-252
     Fixed 'meta' shortcuts not translated into platform-specific text #AP-270
@@ -931,7 +931,7 @@ Version 4.7.6 (2018-01-29)
     Fixed a bug where TinyMCE didn't work with module loaders like webpack.
 Version 4.7.5 (2018-01-22)
     Fixed bug with the Codesample Plugin where it wasn't possible to edit codesamples when the editor was in inline mode.
-    Fixed bug where focusing on the status bar broke the keyboard navigation functionality.
+    Fixed bug where focusing on the statusTicket bar broke the keyboard navigation functionality.
     Fixed bug where an error would be thrown on Edge by the Table Plugin when pasting using the PowerPaste Plugin.
     Fixed bug in the Table Plugin where selecting row border style from the dropdown menu in advanced row properties would throw an error.
     Fixed bug with icons being rendered incorrectly on Chrome on Mac OS.
@@ -1107,7 +1107,7 @@ Version 4.6.3 (2017-05-30)
     Fixed bug where delete/backspace didn't work correctly on nested inline boundary elements.
     Fixed bug where image editing didn't work on subsequent edits of the same image.
     Fixed bug where charmap descriptions wouldn't properly wrap if they exceeded the width of the box.
-    Fixed bug where the default image upload handler only accepted 200 as a valid http status code.
+    Fixed bug where the default image upload handler only accepted 200 as a valid http statusTicket code.
     Fixed so rel on target=_blank links gets forced with only noopener instead of both noopener and noreferrer.
 Version 4.6.2 (2017-05-23)
     Fixed bug where the SaxParser would run out of memory on very large documents.
