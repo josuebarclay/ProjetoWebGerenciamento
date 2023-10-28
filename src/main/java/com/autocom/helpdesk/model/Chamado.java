@@ -2,6 +2,7 @@ package com.autocom.helpdesk.model;
 
 import com.autocom.helpdesk.enums.Prioridade;
 import com.autocom.helpdesk.enums.StatusTicket;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Future;
@@ -17,7 +18,9 @@ public class Chamado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String titulo;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataAbertura = LocalDate.now();
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dataFechamento;
 
     @NotNull(message = "O nome do bairro nao pode estar vazio")

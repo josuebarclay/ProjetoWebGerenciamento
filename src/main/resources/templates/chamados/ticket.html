@@ -32,8 +32,8 @@
                     <div class="row">
                         <!--Nome cliente -->
                         <div class="form-group col-3">
-                            <label>NOME DO CLIENTE:</label>
-                            <select class="form-control" th:field="*{cliente}">
+                            <label class="lblCliente">NOME DO CLIENTE:</label>
+                            <select class="form-control" th:field="*{cliente}" >
                                 <option th:each="cliente: ${listaClientes}" th:value="${cliente.id}" th:text="${cliente.nome}" th:selected="${cliente.id == chamado.cliente?.id}"></option>
                             </select>
                         </div>
@@ -69,7 +69,7 @@
                             <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('observacao')}">
                                 <label class="validation-message" th:errors="*{observacao}"></label>
                             </div>
-                            <label for="nome" class="lblCliente">OBSERVAÇÃO:</label>
+                            <label for="nome" class="lblCliente">DESCRIÇÃO:</label>
                             <input th:field="*{observacao}" type="text" class="form-control" autocomplete="off"  id="nome" placeholder="Ex: Lorem Ipsum"/>
                         </div>
 

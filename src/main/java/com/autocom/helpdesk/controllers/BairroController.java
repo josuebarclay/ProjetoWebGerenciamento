@@ -38,6 +38,7 @@ public class BairroController {
             mv.setViewName("visita/cadastroBairro");
             mv.addObject("bairro", bairro);
         } else {
+            bairro.setNomeBairro(bairro.getNomeBairro().toUpperCase());
             mv.setViewName("redirect:/bairro/list-bairro");
             bairroRepository.save(bairro);
         }

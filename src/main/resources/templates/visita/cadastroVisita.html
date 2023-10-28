@@ -162,7 +162,7 @@
                         <div class="form-group col-4">
                             <label for="statusVisita" class="lblCliente">STATUS DA VISITA:</label>
                             <select class="form-control" id="statusVisita" name="statusVisita" th:field="*{statusVisita}">
-                                <option th:each="visita : ${statusVisita}" th:value="${visita}" th:text="${visita.getVisitaStatus()}"></option>
+                                <option th:each="visita : ${statusVisita}" th:value="${visita}" th:text="${visita}"></option>
                             </select>
                         </div>
                     </div>

@@ -22,7 +22,7 @@
                     <div class="col-md-12 grid-margin">
                         <div class="row">
                             <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                                <h3 class="font-weight-bold">Listagem de Clientes</h3>
+                                <h3 class="font-weight-bold">Filtrar Chamados por Funcionário e Data</h3>
                             </div>
                         </div>
                     </div>
@@ -32,48 +32,42 @@
                     <div class="col-md-12 grid-margin stretch-card">
                         <div class="card table-bg">
                             <div class="card-people mt-auto">
-                                <h4 class="m-4">Clientes cadastrados no sistema</h4>
+                                <div th:if="${mensagemErro}" class="alert alert-danger">
+                                    <p th:text="${mensagemErro}"></p>
+                                </div>
                                 <table class="table table-striped">
                                     <thead class="thead-dark">
                                     <tr>
-                                        <th scope="col">ID</th>
-                                        <th scope="col">NOME</th>
-                                        <th scope="col">EMAIL</th>
-                                        <th scope="col">AÇÃO</th>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Data de Abertura</th>
+                                        <th scope="col">Cliente</th>
+                                        <th scope="col">Título do Chamado</th>
+                                        <th scope="col">Observação do Chamado</th>
+                                        <th scope="col">Prioridade</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Técnico Responsável</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="cliente : ${clientes}">
-                                        <td th:text="${cliente.id}"></td>
-                                        <td th:text="${cliente.nome}"></td>
-                                        <td th:text="${cliente.email}"></td>
-                                        <td><a class="btn btn-warning" th:href="@{editar/{id}(id=${cliente.id})}">EDITAR</a>
-                                            <a class="btn btn-danger" th:href="@{excluir/{id}(id=${cliente.id})}">Excluir</a></td>
-                                    </tr>
+                                    <th:block th:if="${not #lists.isEmpty(chamadoTecnico)}">
+                                        <tr th:each="chamado : ${chamadoTecnico}">
+                                            <td th:text="${chamado.id}"></td>
+                                            <td th:text="${chamado.dataAbertura}"></td>
+                                            <td th:text="${chamado.cliente.nome}"></td>
+                                            <td th:text="${chamado.titulo}"></td>
+                                            <td th:text="${chamado.observacao}"></td>
+                                            <td th:text="${chamado.prioridade}"></td>
+                                            <td th:text="${chamado.status}"></td>
+                                            <td th:text="${chamado.tecnico.nome}"></td>
+                                        </tr>
+                                    </th:block>
                                     </tbody>
                                 </table>
-                                <!-- paginação da tabela -->
-
-                                <nav class="m-4">
-                                    <ul class="pagination">
-                                        <li class="page-item disabled">
-                                            <a class="page-link">Previous</a>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item " aria-current="page">
-                                            <a class="page-link" href="#">2</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">Next</a>
-                                        </li>
-                                    </ul>
-                                </nav>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-12 grid-margin transparent">
-                        <!-- conteudo indefinido -->
+                        <!-- conteúdo indefinido -->
                     </div>
                 </div>
             </div>

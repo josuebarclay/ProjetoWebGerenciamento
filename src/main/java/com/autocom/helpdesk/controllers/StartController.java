@@ -11,11 +11,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
+import java.util.List;
 
 
 @Controller
@@ -30,14 +33,18 @@ public class StartController {
     @Autowired
     private ClienteRepository clienteRepository;
 
+
+
     @GetMapping("/")
     public ModelAndView start(@RequestParam(defaultValue = "1") int page){
         ModelAndView mv = new ModelAndView("home/index");
-        Pageable pageReq = PageRequest.of((page -1),2);
+        Pageable pageReq = PageRequest.of((page -1),5);
         Page<Chamado> resultPages = chamadoRepository.findAll(pageReq);
         mv.addObject("chamadosList", resultPages);
+        mv.addObject("tecnicos", tecnicoRepository.findAll());
         return mv;
     }
+
 
     @GetMapping("/redefinir-senha")
     public ModelAndView resetPassord(Principal principal){
@@ -46,8 +53,8 @@ public class StartController {
         ResetPasswordUserDao currentSenhaDao = new ResetPasswordUserDao(tecnicoAuth.getSenha());
         mv.addObject("senhaAtual", currentSenhaDao);
         mv.addObject("resetPasswordUserDao", new ResetPasswordUserDao());
+        mv.addObject("tecnicos", tecnicoRepository.findAll());
         return mv;
     }
-
 
 }

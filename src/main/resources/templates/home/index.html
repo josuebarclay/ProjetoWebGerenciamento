@@ -31,16 +31,16 @@
                 <div class="card-people mt-auto">
                   <h4 class="m-4">Últimos chamados inseridos</h4>
                   <table class="table table-striped">
-                    <thead>
+                    <thead class="thead-dark">
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">Data de Abertura</th>
-                      <th scope="col">Cliente</th>
-                      <th scope="col">Título do Chamado</th>
-                      <th scope="col">Observação do Chamado</th>
-                      <th scope="col">Prioridade</th>
-                      <th scope="col">Status</th>
-                      <th scope="col">Técnico Responsável</th>
+                      <th scope="col">DATA DE ABERTURA:</th>
+                      <th scope="col">CLIENTE:</th>
+                      <th scope="col">TITULO DO CHAMADO:</th>
+                      <th scope="col">DESCRIÇÃO:</th>
+                      <th scope="col">PRIORIDADE</th>
+                      <th scope="col">STATUS</th>
+                      <th scope="col">FUNCIONARIO RESPONSÁVEL:</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -77,6 +77,38 @@
                       </li>
                     </ul>
                   </nav>
+
+                  <div class="row">
+                    <div class="col-md-12 grid-margin stretch-card">
+                      <div class="card table-bg">
+                        <div class="card-people mt-auto">
+
+                          <form th:action="@{/list-filtro}" method="post" class="form">
+                            <div class="row">
+                              <div class="form-group col-md-4" >
+
+                                <label for="tecnicoId">Selecione um Técnico:</label>
+                                <select class="form-control" name="tecnicoId" id="tecnicoId">
+                                  <option th:each="tecnico : ${tecnicos}" th:value="${tecnico.id}" th:text="${tecnico.nome}"></option>
+                                </select>
+                              </div>
+
+                              <div class="form-group col-md-4">
+                                <label for="dataInicio">Data de Início:</label>
+                                <input class="form-control" type="date" name="dataInicio" id="dataInicio">
+                              </div>
+
+                              <div class="form-group col-md-4">
+                                <label for="dataFim">Data de Fim:</label>
+                                <input class="form-control" type="date" name="dataFim" id="dataFim">
+                              </div>
+                            </div>
+                            <button type="submit" class="btn btn-dark">Filtrar Chamados</button>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

@@ -13,8 +13,8 @@ public class Bairro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     @NotNull (message = "O nome do bairro nao pode estar vazio")
-    @Pattern(regexp = "^[a-zA-Z0-9 ]+$", message = "O nome não pode conter caracteres especiais.")
     @Size( min = 5 , message = "o nome precisa ter mais de 5 caracteres")
     private String nomeBairro;
 
