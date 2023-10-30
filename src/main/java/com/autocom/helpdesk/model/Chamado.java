@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @Entity
 public class Chamado {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
