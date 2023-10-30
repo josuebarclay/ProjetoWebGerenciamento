@@ -3,11 +3,9 @@ package com.autocom.helpdesk.model;
 import com.autocom.helpdesk.enums.Prioridade;
 import com.autocom.helpdesk.enums.StatusTicket;
 import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
-import javax.validation.constraints.Future;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
@@ -17,15 +15,19 @@ public class Chamado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotEmpty(message = "CAMPO OBRIGATORIO")
     private String titulo;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataAbertura = LocalDate.now();
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataFechamento;
 
-    @NotNull(message = "O nome do bairro nao pode estar vazio")
+    @NotEmpty(message = "CAMPO OBRIGATORIO")
     @Size( min = 10 , message = "o nome precisa ter mais de 5 caracteres")
-    @Column(length = 500)
+    @Column(length = 1000)
     private String observacao;
 
     private Prioridade prioridade;

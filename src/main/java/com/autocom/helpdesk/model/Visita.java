@@ -2,6 +2,8 @@ package com.autocom.helpdesk.model;
 
 import com.autocom.helpdesk.enums.SimNao;
 import com.autocom.helpdesk.enums.StatusVisita;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -18,19 +20,20 @@ public class Visita {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull(message = "A data da visita não pode estar vazia")
+    @NotNull(message = "CAMPO OBRIGATORIO")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataVisita = LocalDate.now();
 
-    @NotBlank(message = "O nome do visitante não pode estar em branco")
+    @NotBlank(message = "CAMPO OBRIGATORIO")
     private String nomeVisitante;
 
-    @NotBlank(message = "O nome da empresa não pode estar em branco")
+    @NotBlank(message = "CAMPO OBRIGATORIO")
     private String nomeEmpresa;
 
-    @NotBlank(message = "O endereço não pode estar em branco")
+    @NotBlank(message = "CAMPO OBRIGATORIO")
     private String endereco;
 
-    @NotBlank(message = "O contato não pode estar em branco")
+    @NotBlank(message = "CAMPO OBRIGATORIO")
     private String contato;
 
     @Pattern(regexp = "^[0-9\\s]+$", message = "O telefone deve conter apenas dígitos e espaços")
@@ -39,15 +42,15 @@ public class Visita {
     @Email(message = "Informe um endereço de e-mail válido")
     private String email;
 
-    @NotNull(message = "O status da visita não pode estar vazio")
+    @NotNull(message = "CAMPO OBRIGATORIO")
     private String informacao; //Descreva a visita em detalhes, incluindo o que aconteceu durante a reunião. Isso pode envolver discussões sobre produtos, serviços, preços, termos contratuais, resolução de problemas ou qualquer outra interação significativa.
 
-    @NotNull(message = "O status da visita não pode estar vazio")
+    @NotNull(message = "CAMPO OBRIGATORIO")
     private SimNao temSistema;
     private String motivo;
     private String nomeEmpresaAutomacao;
 
-    @NotNull(message = "O status da visita não pode estar vazio")
+    @NotNull(message = "CAMPO OBRIGATORIO")
     private String qualSistema;
     private String tempodoSistema;
     private SimNao satisfacao; //satisfeito com o sistema
@@ -55,7 +58,7 @@ public class Visita {
     private SimNao cartao;
     private String recebimento; //qual o tipo do recebimento
 
-    @NotNull(message = "O status da visita não pode estar vazio")
+    @NotNull(message = "CAMPO OBRIGATORIO")
     private String dataRetorno;
     private StatusVisita statusVisita;
 

@@ -28,7 +28,7 @@
                     </div>
                 </div>
 
-                <form method="post" th:action="@{/ticket/new-ticket}" th:object="${tickets}">
+                <form method="post" th:action="@{/ticket/salvarTicket}" th:object="${tickets}" th:modelAttribute="tickets">
                     <div class="row">
                         <!--Nome cliente -->
                         <div class="form-group col-3">
@@ -40,11 +40,11 @@
 
                         <!-- Campo de Título com validação -->
                         <div class="form-group col-3">
-                            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('titulo')}">
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${#fields.hasErrors('titulo')}">
                                 <label class="validation-message" th:errors="*{titulo}"></label>
                             </div>
                             <label for="nome" class="lblCliente">TÍTULO DO CHAMADO:</label>
-                            <input type="text" class="form-control" autocomplete="off" th:field="*{titulo}" name="titulo" placeholder="Ex: Impressora com defeito"/>
+                            <input type="text" class="form-control" autocomplete="off" th:field="*{titulo}"  placeholder="Ex: Impressora com defeito"/>
                         </div>
 
                         <!-- Campo de Status com validação -->
@@ -66,7 +66,7 @@
 
                         <!-- Campo de observacao com validação -->
                         <div class="form-group col-3">
-                            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('observacao')}">
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${#fields.hasErrors('observacao')}">
                                 <label class="validation-message" th:errors="*{observacao}"></label>
                             </div>
                             <label for="nome" class="lblCliente">DESCRIÇÃO:</label>
@@ -89,15 +89,15 @@
 </div>
 
 <!-- plugins:js -->
-<script src="../../vendors/js/vendor.bundle.base.js"></script>
+<script src="/vendors/js/vendor.bundle.base.js"></script>
 <!-- End plugin js for this page -->
 <!-- inject:js -->
-<script src="../../js/off-canvas.js"></script>
-<script src="../../js/template.js"></script>
-<script src="../../js/hoverable-collapse.js"></script>
+<script src="/js/off-canvas.js"></script>
+<script src="/js/template.js"></script>
+<script src="/js/hoverable-collapse.js"></script>
 <!-- endinject -->
 <!-- Custom js for this page-->
-<script src="../../js/dashboard.js"></script>
+<script src="/js/dashboard.js"></script>
 <!-- End custom js for this page-->
 
 

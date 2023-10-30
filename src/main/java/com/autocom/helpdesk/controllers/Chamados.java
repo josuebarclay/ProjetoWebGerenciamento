@@ -51,23 +51,25 @@ public class Chamados {
         return mv;
     }
 
-    @PostMapping("/new-ticket")
-    public ModelAndView newTicket(@Valid Chamado chamado, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            ModelAndView mv = new ModelAndView("chamados/ticket");
+    @PostMapping("/salvarTicket")
+    public ModelAndView salvarTicket(@Valid Chamado chamado, BindingResult br) {
+        ModelAndView mv = new ModelAndView();
+
+        if (br.hasErrors()) {
+            mv.setViewName(("chamados/ticket"));
+            mv.addObject("tickets", chamado);
             mv.addObject("statusChamados", StatusTicket.values());
             mv.addObject("prioridade", Prioridade.values());
             mv.addObject("tecnicos", tecnicoRepository.findAll());
-            mv.addObject("tickets", chamado);
             mv.addObject("listaClientes", clienteRepository.findAll());
-            return mv;
-        }
-        chamado.setObservacao(chamado.getObservacao().toUpperCase());
-        chamado.setTitulo(chamado.getObservacao().toUpperCase());
+        }else {
+            chamado.setObservacao(chamado.getObservacao().toUpperCase());
+            chamado.setTitulo(chamado.getTitulo().toUpperCase());
             chamadoRepository.save(chamado);
             return chamadoHome(1);
         }
-
+        return mv;
+        }
 
 
 }

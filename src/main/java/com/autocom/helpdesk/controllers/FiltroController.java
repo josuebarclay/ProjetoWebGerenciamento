@@ -58,7 +58,7 @@ public class FiltroController {
                 mv.addObject("chamadoTecnico", chamadosDoTecnico);
             }
         } catch (DateTimeParseException e) {
-            mv.addObject("mensagemErro", "Erro na conversão da data. Utilize o formato yyyy-MM-dd.");
+            mv.addObject("mensagemErro", "Erro na conversão da data. Utilize o formato dd-mm-yyyy.");
         }
 
         return mv;

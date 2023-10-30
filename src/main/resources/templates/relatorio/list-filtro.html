@@ -18,57 +18,37 @@
             <div class="content-wrapper">
 
                 <!-- cabeçalho boas vindas -->
+
                 <div class="row">
                     <div class="col-md-12 grid-margin">
                         <div class="row">
                             <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                                 <h3 class="font-weight-bold">Filtrar Chamados por Funcionário e Data</h3>
+                                        <a href="/" class="btn btn-dark">Voltar</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- conteúdo principal -->
-                <div class="row">
-                    <div class="col-md-12 grid-margin stretch-card">
-                        <div class="card table-bg">
-                            <div class="card-people mt-auto">
-                                <div th:if="${mensagemErro}" class="alert alert-danger">
-                                    <p th:text="${mensagemErro}"></p>
+                <div class="container">
+                        <div class="row">
+                            <th:block th:if="${not #lists.isEmpty(chamadoTecnico)}">
+                                <div th:each="chamado : ${chamadoTecnico}" class="col-md-3">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title" th:text="${chamado.cliente.nome}"></h5>
+                                            <p class="card-text">TITULO: <span th:text="${chamado.titulo}"></span></p>
+                                            <p class="card-text">DATA DE ABERTURA: <span th:text="${chamado.dataAbertura}"></span></p>
+                                            <p class="card-text">PRIORIDADE: <span th:text="${chamado.prioridade}"></span></p>
+                                            <p class="card-text">STATUS: <span th:text="${chamado.status}"></span></p>
+                                            <p class="card-text">TECNÍCO: <span th:text="${chamado.tecnico.nome}"></span></p>
+                                            <p class="card-text" th:text="${chamado.observacao}"></p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <table class="table table-striped">
-                                    <thead class="thead-dark">
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Data de Abertura</th>
-                                        <th scope="col">Cliente</th>
-                                        <th scope="col">Título do Chamado</th>
-                                        <th scope="col">Observação do Chamado</th>
-                                        <th scope="col">Prioridade</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Técnico Responsável</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <th:block th:if="${not #lists.isEmpty(chamadoTecnico)}">
-                                        <tr th:each="chamado : ${chamadoTecnico}">
-                                            <td th:text="${chamado.id}"></td>
-                                            <td th:text="${chamado.dataAbertura}"></td>
-                                            <td th:text="${chamado.cliente.nome}"></td>
-                                            <td th:text="${chamado.titulo}"></td>
-                                            <td th:text="${chamado.observacao}"></td>
-                                            <td th:text="${chamado.prioridade}"></td>
-                                            <td th:text="${chamado.status}"></td>
-                                            <td th:text="${chamado.tecnico.nome}"></td>
-                                        </tr>
-                                    </th:block>
-                                    </tbody>
-                                </table>
-                            </div>
+                            </th:block>
                         </div>
-                    </div>
-                    <div class="col-md-12 grid-margin transparent">
-                        <!-- conteúdo indefinido -->
-                    </div>
                 </div>
             </div>
         </div>

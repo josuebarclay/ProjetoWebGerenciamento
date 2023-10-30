@@ -28,13 +28,13 @@
                     </div>
                 </div>
                 <!-- conteúdo principal -->
-                <form th:action="@{/bairro/salvarbairro}" method="post" th:object="${bairro}" enctype="multipart/form-data">
+                <form th:action="@{/bairro/salvarbairro}" method="post" th:object="${bairro}" th:modelAttribute="bairro" enctype="multipart/form-data">
                     <div class="row">
                         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 
                         <!-- field Visitante -->
                         <div class="form-group col-4">
-                            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('nomeBairro')}">
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${#fields.hasErrors('nomeBairro')}">
                                 <label class="validation-message" th:errors="*{nomeBairro}"></label>
                             </div>
                             <label for="nome" class="lblCliente">NOME DO BAIRRO:</label>

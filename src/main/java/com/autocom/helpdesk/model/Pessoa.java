@@ -12,11 +12,10 @@ public abstract class Pessoa {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
-    @NotNull (message = "O nome do bairro nao pode estar vazio")
+    @NotNull (message = "CAMPO OBRIGATORIO")
     private String nome;
     @Email
     private String email;
-    @NotNull (message = "O nome do bairro nao pode estar vazio")
     private String senha;
     private String imagem;
     private Perfil perfil;

@@ -24,6 +24,38 @@
               </div>
             </div>
           </div>
+
+          <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+              <div class="card table-bg">
+                <div class="card-people mt-auto">
+                  <h4 class="m-4">RELATORIO POR TECNICO E PERÍODO</h4>
+                  <form th:action="@{/list-filtro}" method="post" class="form">
+                    <div class="row">
+                      <div class="form-group col-md-4" >
+
+                        <label for="tecnicoId">SELECIONE UM TECNICO:</label>
+                        <select class="form-control" name="tecnicoId" id="tecnicoId">
+                          <option th:each="tecnico : ${tecnicos}" th:value="${tecnico.id}" th:text="${tecnico.nome}"></option>
+                        </select>
+                      </div>
+
+                      <div class="form-group col-md-4">
+                        <label for="dataInicio">DATA DE INÍCIO:</label>
+                        <input class="form-control" type="date" name="dataInicio" id="dataInicio">
+                      </div>
+
+                      <div class="form-group col-md-4">
+                        <label for="dataFim">DATA DE FIM:</label>
+                        <input class="form-control" type="date" name="dataFim" id="dataFim">
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-dark">FILTRAR</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
             <!-- content main -->
           <div class="row">
             <div class="col-md-12 grid-margin stretch-card">
@@ -37,7 +69,6 @@
                       <th scope="col">DATA DE ABERTURA:</th>
                       <th scope="col">CLIENTE:</th>
                       <th scope="col">TITULO DO CHAMADO:</th>
-                      <th scope="col">DESCRIÇÃO:</th>
                       <th scope="col">PRIORIDADE</th>
                       <th scope="col">STATUS</th>
                       <th scope="col">FUNCIONARIO RESPONSÁVEL:</th>
@@ -49,7 +80,6 @@
                       <td th:text="${chamado.dataAbertura}"></td>
                       <td th:text="${chamado.cliente.nome}"></td>
                       <td th:text="${chamado.titulo}"></td>
-                      <td th:text="${chamado.observacao}"></td>
                       <td th:text="${chamado.prioridade}"></td>
                       <td th:text="${chamado.status}"></td>
                       <td th:text="${chamado.tecnico.nome}"></td>
@@ -77,38 +107,6 @@
                       </li>
                     </ul>
                   </nav>
-
-                  <div class="row">
-                    <div class="col-md-12 grid-margin stretch-card">
-                      <div class="card table-bg">
-                        <div class="card-people mt-auto">
-
-                          <form th:action="@{/list-filtro}" method="post" class="form">
-                            <div class="row">
-                              <div class="form-group col-md-4" >
-
-                                <label for="tecnicoId">Selecione um Técnico:</label>
-                                <select class="form-control" name="tecnicoId" id="tecnicoId">
-                                  <option th:each="tecnico : ${tecnicos}" th:value="${tecnico.id}" th:text="${tecnico.nome}"></option>
-                                </select>
-                              </div>
-
-                              <div class="form-group col-md-4">
-                                <label for="dataInicio">Data de Início:</label>
-                                <input class="form-control" type="date" name="dataInicio" id="dataInicio">
-                              </div>
-
-                              <div class="form-group col-md-4">
-                                <label for="dataFim">Data de Fim:</label>
-                                <input class="form-control" type="date" name="dataFim" id="dataFim">
-                              </div>
-                            </div>
-                            <button type="submit" class="btn btn-dark">Filtrar Chamados</button>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
