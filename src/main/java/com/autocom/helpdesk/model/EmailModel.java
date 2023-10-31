@@ -15,7 +15,7 @@ public class EmailModel implements Serializable {
     private Long emailId;
     private String ownrRef; //referencia do propetario enviado
     private String emailFrom; //quem esta enviando
-    private String emailTo; //pra quem esta sendo enviado
+    private String telefone; //pra quem esta sendo enviado
     private String subject; //titulo do email
     @Column(columnDefinition = "TEXT") // corpo do email
     private String text;
@@ -24,11 +24,11 @@ public class EmailModel implements Serializable {
 
     public EmailModel(){}
 
-    public EmailModel(Long emailId, String ownrRef, String emailFrom, String emailTo, String subject, String text, LocalDate sendDateEmail, StatusEmail statusEmail) {
+    public EmailModel(Long emailId, String ownrRef, String emailFrom, String telefone, String subject, String text, LocalDate sendDateEmail, StatusEmail statusEmail) {
         this.emailId = emailId;
         this.ownrRef = ownrRef;
         this.emailFrom = emailFrom;
-        this.emailTo = emailTo;
+        this.telefone = telefone;
         this.subject = subject;
         this.text = text;
         this.sendDateEmail = sendDateEmail;
@@ -59,12 +59,12 @@ public class EmailModel implements Serializable {
         this.emailFrom = emailFrom;
     }
 
-    public String getEmailTo() {
-        return emailTo;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setEmailTo(String emailTo) {
-        this.emailTo = emailTo;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public String getSubject() {

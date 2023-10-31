@@ -5,19 +5,18 @@ import javax.validation.constraints.NotBlank;
 
 public class EmailDTO {
 
-
     private String ownrRef; //referencia do propetario enviado
     private String emailFrom; //quem esta enviando
-    private String emailTo; //pra quem esta sendo enviado
+    private String telefone; //pra quem esta sendo enviado
     private String subject; //titulo do email
     private String text;
 
     public EmailDTO(){}
 
-    public EmailDTO(String ownrRef, String emailFrom, String emailTo, String subject, String text) {
+    public EmailDTO(String ownrRef, String emailFrom, String telefone, String subject, String text) {
         this.ownrRef = ownrRef;
         this.emailFrom = emailFrom;
-        this.emailTo = emailTo;
+        this.telefone = telefone;
         this.subject = subject;
         this.text = text;
     }
@@ -38,12 +37,12 @@ public class EmailDTO {
         this.emailFrom = emailFrom;
     }
 
-    public String getEmailTo() {
-        return emailTo;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setEmailTo(String emailTo) {
-        this.emailTo = emailTo;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public String getSubject() {

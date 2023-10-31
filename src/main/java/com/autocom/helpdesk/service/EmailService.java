@@ -29,7 +29,9 @@ public class EmailService {
             message.setFrom(emailModel.getEmailFrom());
             message.setTo("suporte3@autocominformatica.com");
             message.setSubject(emailModel.getSubject());
-            message.setText(emailModel.getText());
+            message.setText("Mensagem: " + emailModel.getText() + "\n"
+                    + "Telefone: " + emailModel.getTelefone() + "\n"
+                    + "E-mail: " + emailModel.getEmailFrom());
             javaMailSender.send(message);
 
             emailModel.setStatusEmail(StatusEmail.SENT);
