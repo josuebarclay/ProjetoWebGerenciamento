@@ -32,32 +32,37 @@
                     <div class="col-md-12 grid-margin stretch-card">
                         <div class="card table-bg">
                             <div class="card-people mt-auto">
-                                <h4 class="m-4">Clientes Que Entraram em Contato Pela Página</h4>
+                                <h4 class="m-4">E-mails Enviados</h4>
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th scope="col">ID</th>
-                                        <th scope="col">NOME</th>
-                                        <th scope="col">E-MAIL</th>
-                                        <th scope="col">NÚMERO</th>
+                                        <th>ID</th>
+                                        <th>Remetente</th>
+                                        <th>Destinatário</th>
+                                        <th>Assunto</th>
+                                        <th>Data de Envio</th>
+                                        <th>Status</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="cliente : ${contatos}">
-                                        <td th:text="${cliente.id}"></td>
-                                        <td th:text="${cliente.nome}"></td>
-                                        <td th:text="${cliente.email}"></td>
-                                        <td th:text="${cliente.numero}"></td>
+                                    <tr th:each="email : ${contatos}">
+                                        <td th:text="${email.emailId}"></td>
+                                        <td th:text="${email.emailFrom}"></td>
+                                        <td th:text="${email.emailTo}"></td>
+                                        <td th:text="${email.subject}"></td>
+                                        <td th:text="${email.sendDateEmail}"></td>
+                                        <td th:text="${email.statusEmail}"></td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12 grid-margin transparent">
-                        <!-- Conteúdo adicional, se necessário -->
-                    </div>
                 </div>
+                <div class="col-md-12 grid-margin transparent">
+                    <!-- Conteúdo adicional, se necessário -->
+                </div>
+
             </div>
         </div>
     </div>

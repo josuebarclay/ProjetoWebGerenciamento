@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<style>
+  body {
+      background-color: #17a2b8;
+  }
+
+  .content-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+  }
+
+  .message-container {
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 20px;
+  }
+
+  .success-icon {
+      font-size: 50px;
+      color: #28a745;
+  }
+</style>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <head th:include="~{fragments/head :: headImports}" ></head>
+
+<body>
+<div class="content-wrapper">
+  <div class="message-container">
+    <i class="fas fa-check-circle success-icon"></i>
+    <h1 class="display-4">Mensagem</h1>
+    <h2 class="text-success">Enviada!</h2>
+    <p class="lead">Mensagem Enviada com sucesso!</p>
+    <p>Em breve entraremos em contato, não se preocupe!</p>
+    <div class="alert alert-success" th:if="${mensagem}">
+      <p th:text="${mensagem}"></p>
+    </div>
+    <a class="btn btn-info" th:href="@{autocom/autocom}">Voltar para o Início</a>
+    <p class="mt-3">Copyright &copy; 2023 Autocom Informatica - Todos os direitos reservados.</p>
+  </div>
+</div>
+
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="/vendors/js/vendor.bundle.base.js"></script>
+  <script src="/js/off-canvas.js"></script>
+  <script src="/js/hoverable-collapse.js"></script>
+  <script src="/js/template.js"></script>
+  <script src="/js/settings.js"></script>
+  <script src="/js/todolist.js"></script>
+</body>
+
+</html>

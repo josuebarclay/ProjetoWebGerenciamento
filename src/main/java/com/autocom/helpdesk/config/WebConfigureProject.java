@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 @Configuration
 @EnableWebSecurity
@@ -25,6 +26,14 @@ public class WebConfigureProject extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
+                .antMatchers("/autocom/envio-email").permitAll()
+                .antMatchers("/autocom/**").permitAll()
+                .antMatchers("/assets-autocom/**").permitAll()
+                .antMatchers("/img-autocom/**").permitAll()
+                .antMatchers("/js-autocom/**").permitAll()
+                .antMatchers("/scss-autocom/**").permitAll()
+                .antMatchers("/vendor-autocom/**").permitAll()
+                .antMatchers("/css-autocom/**").permitAll()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
                 .antMatchers("/images/**").permitAll()
@@ -39,6 +48,9 @@ public class WebConfigureProject extends WebSecurityConfigurerAdapter {
 
         http.rememberMe()
                 .key("keyRemeber");
+
+        http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+
 
     }
 
