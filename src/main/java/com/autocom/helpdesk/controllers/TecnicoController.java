@@ -98,7 +98,7 @@ public class TecnicoController {
     }
 
 
-    @GetMapping("/inicio-tecnico")
+    @GetMapping("/autocom")
     public ModelAndView home(@RequestParam(defaultValue = "1") int page) {
         ModelAndView mv = new ModelAndView("home/index");
         Pageable pageReq = PageRequest.of((page -1),2);

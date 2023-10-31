@@ -5,10 +5,15 @@ import javax.validation.constraints.NotBlank;
 
 public class EmailDTO {
 
+    @NotBlank
     private String ownrRef; //referencia do propetario enviado
+    @NotBlank
     private String emailFrom; //quem esta enviando
+    @NotBlank
     private String telefone; //pra quem esta sendo enviado
+    @NotBlank
     private String subject; //titulo do email
+    @NotBlank
     private String text;
 
     public EmailDTO(){}

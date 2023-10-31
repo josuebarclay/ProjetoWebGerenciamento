@@ -22,7 +22,7 @@
                     <div class="col-md-12 grid-margin">
                         <div class="row">
                             <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                                <h3 class="font-weight-bold">Listagem de Bairros</h3>
+                                <h3 class="font-weight-bold">Ultimos Contatos</h3>
                             </div>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                                     <tr th:each="email : ${contatos}">
                                         <td th:text="${email.emailId}"></td>
                                         <td th:text="${email.emailFrom}"></td>
-                                        <td th:text="${email.emailTo}"></td>
+                                        <td th:text="${email.telefone}"></td>
                                         <td th:text="${email.subject}"></td>
                                         <td th:text="${email.sendDateEmail}"></td>
                                         <td th:text="${email.statusEmail}"></td>

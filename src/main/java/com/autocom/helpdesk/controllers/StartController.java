@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -22,6 +23,7 @@ import java.util.List;
 
 
 @Controller
+@RequestMapping("/autocom")
 public class StartController {
 
     @Autowired
@@ -35,7 +37,7 @@ public class StartController {
 
 
 
-    @GetMapping("/")
+    @GetMapping("/autocom")
     public ModelAndView start(@RequestParam(defaultValue = "1") int page){
         ModelAndView mv = new ModelAndView("home/index");
         Pageable pageReq = PageRequest.of((page -1),5);

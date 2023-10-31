@@ -26,8 +26,9 @@ public class WebConfigureProject extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/autocom/envio-email").permitAll()
-                .antMatchers("/autocom/**").permitAll()
+                .antMatchers("/").permitAll()
+                .antMatchers("/sucesso/sucessoEmail").permitAll()
+                .antMatchers("/sucessoEmail").permitAll()
                 .antMatchers("/assets-autocom/**").permitAll()
                 .antMatchers("/img-autocom/**").permitAll()
                 .antMatchers("/js-autocom/**").permitAll()
@@ -43,14 +44,13 @@ public class WebConfigureProject extends WebSecurityConfigurerAdapter {
 
         http.formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/") // Redirecionar para a página inicial do técnico
+                .defaultSuccessUrl("/autocom/autocom") // Redirecionar para a página inicial do técnico
                 .permitAll();
 
         http.rememberMe()
                 .key("keyRemeber");
 
         http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
-
 
     }
 

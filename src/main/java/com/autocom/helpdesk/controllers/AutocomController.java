@@ -6,8 +6,6 @@ import com.autocom.helpdesk.repository.EmailRepository;
 import com.autocom.helpdesk.service.EmailService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +16,6 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@RequestMapping("/autocom")
 public class AutocomController {
 
     @Autowired
@@ -28,7 +25,7 @@ public class AutocomController {
     EmailService emailService;
 
 
-    @GetMapping("/autocom")
+    @GetMapping("/")
     public ModelAndView autocomHome() {
         ModelAndView mv = new ModelAndView("autocom/autocom");
         return mv;
@@ -47,7 +44,7 @@ public class AutocomController {
         EmailModel emailModel = new EmailModel();
         BeanUtils.copyProperties(emailDTO, emailModel);
         emailService.sendEmail(emailModel);
-        return "redirect:/autocom/sucessoEmail";
+        return "redirect:/sucessoEmail";
     }
 
     @GetMapping("/sucessoEmail")

@@ -31,7 +31,7 @@ public class Chamados {
     private ClienteRepository clienteRepository;
 
 
-    @GetMapping("home")
+    @GetMapping("autocom")
     public ModelAndView chamadoHome(@RequestParam(defaultValue = "1") int page){
         ModelAndView mv = new ModelAndView("home/index");
         Pageable pageReq = PageRequest.of((page -1),5);

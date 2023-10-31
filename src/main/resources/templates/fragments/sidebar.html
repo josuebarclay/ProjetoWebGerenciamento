@@ -1,7 +1,7 @@
 <nav th:fragment="sidebarImports" class="sidebar sidebar-offcanvas " id="sidebar" xmlns:th="">
     <ul class="nav">
       <li class="nav-item">
-        <a class="nav-link" th:href="@{/}" >
+        <a class="nav-link" th:href="@{/autocom/autocom}" >
           <i class="mdi mdi-home"></i>
           <span class="menu-title">&nbsp;&nbsp; HOME</span>
         </a>
@@ -9,14 +9,14 @@
     
       <li class="nav-item mt-4">
         <a class="nav-link"  th:href="@{/ticket/criar}" >
-          <i class="mdi mdi-clipboard-text"></i>
+          <i class="mdi mdi-checkbox-multiple-marked-circle"></i>
           <span class="menu-title">&nbsp;&nbsp; CHAMADO</span>
         </a>
       </li>
     
       <li class="nav-item" >
         <a class="nav-link" data-toggle="collapse" href="#tecs" >
-          <i class="mdi mdi-account-star"></i>
+          <i class="mdi mdi-worker"></i>
           <span class="menu-title">&nbsp;&nbsp; TÉCNICOS &nbsp;&nbsp;</span>
           <i class="mdi mdi-chevron-down"></i>
         </a>
@@ -30,7 +30,7 @@
 
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#users">
-          <i class="mdi mdi-account-multiple"></i>
+          <i class="mdi mdi-account-card-details"></i>
           <span class="menu-title">&nbsp;&nbsp; CLIENTES &nbsp;&nbsp;</span>
           <i class="mdi mdi-chevron-down"></i>
         </a>
@@ -43,7 +43,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" data-toggle="collapse" href="#visit">
-          <i class="mdi mdi-account-multiple"></i>
+          <i class="mdi mdi-google-maps"></i>
           <span class="menu-title">&nbsp;&nbsp; VISITA &nbsp;&nbsp;</span>
           <i class="mdi mdi-chevron-down"></i>
         </a>
@@ -54,25 +54,35 @@
           </ul>
         </div>
       </li>
+
       <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#tables">
-          <i class="mdi mdi-gift"></i>
-          <span class="menu-title">&nbsp;&nbsp; RECURSOS &nbsp;&nbsp;</span>
+        <a class="nav-link" data-toggle="collapse" href="#bairro">
+          <i class="mdi mdi-plus"></i>
+          <span class="menu-title">&nbsp;&nbsp; MAIS &nbsp;&nbsp;</span>
           <i class="mdi mdi-chevron-down"></i>
         </a>
-        <div class="collapse" id="tables">
+        <div class="collapse" id="bairro">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" th:href="@{/bairro/cadastro}">Cadastro de Bairro</a></li>
             <li class="nav-item"> <a class="nav-link" th:href="@{/bairro/list-bairro}">Lista de Bairro</a></li>
             <li class="nav-item"> <a class="nav-link" th:href="@{/ticket/filtro-chamados}">Lista Chamados</a></li>
-            <li class="nav-item"> <a class="nav-link" th:href="@{/autocom/relatorio}">Últimos Contatos</a></li>
-            <li class="nav-item"> <a class="nav-link" th:href="@{../recursos/icons}">Icones</a></li>
-            <li class="nav-item"> <a class="nav-link" th:href="@{../recursos/elementos}">Elementos Básicos</a></li>
-            <li class="nav-item"> <a class="nav-link" th:href="@{../recursos/buttons}">Buttons</a></li>
+            <li class="nav-item"> <a class="nav-link" th:href="@{/relatorio/relatorio-contato}">Últimos Contatos</a></li>
           </ul>
         </div>
-
       </li>
-
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link" data-toggle="collapse" href="#tables">-->
+<!--          <i class="mdi mdi-gift"></i>-->
+<!--          <span class="menu-title">&nbsp;&nbsp; RECURSOS &nbsp;&nbsp;</span>-->
+<!--          <i class="mdi mdi-chevron-down"></i>-->
+<!--        </a>-->
+<!--        <div class="collapse" id="tables">-->
+<!--          <ul class="nav flex-column sub-menu">-->
+<!--            <li class="nav-item"> <a class="nav-link" th:href="@{/recursos/icons}">Icones</a></li>-->
+<!--            <li class="nav-item"> <a class="nav-link" th:href="@{/recursos/elementos}">Elementos Básicos</a></li>-->
+<!--            <li class="nav-item"> <a class="nav-link" th:href="@{/recursos/buttons}">Buttons</a></li>-->
+<!--          </ul>-->
+<!--        </div>-->
+<!--      </li>-->
     </ul>
   </nav>
