@@ -1,10 +1,13 @@
 package com.autocom.helpdesk.model;
 
 
+import javax.validation.constraints.NotNull;
+
 public class ResetPasswordUserDao {
 
+    @NotNull
     private String senhaAtual;
-
+    @NotNull
     private String novaSenha;
 
     public ResetPasswordUserDao() {}

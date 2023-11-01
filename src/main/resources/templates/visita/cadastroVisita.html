@@ -39,24 +39,31 @@
                                 <span class="validation-message" th:errors="*{nomeVisitante}"></span>
                             </div>
                             <label for="nome" class="lblCliente">VENDEDOR AUTOCOM:</label>
-                            <input type="text" th:field="*{nomeVisitante}" class="form-control" autocomplete="off" id="nome" placeholder="Visitante">
+                            <input type="text" th:field="*{nomeVisitante}" class="form-control" autocomplete="off" id="nome" placeholder="Visitante"
+                                   onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('empresa').focus(); }">
                         </div>
 
+                        <!-- Dados do NOME EMPRESA -->
                         <div class="form-group col-4">
                             <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('nomeEmpresa')}" >
                                 <span class="validation-message" th:errors="*{nomeEmpresa}"></span>
                             </div>
                             <label for="empresa" class="lblCliente">NOME DA EMPRESA:</label>
-                            <input type="text" th:field="*{nomeEmpresa}" class="form-control" autocomplete="off" id="empresa" placeholder="Nome da Empresa">
+                            <input type="text" th:field="*{nomeEmpresa}" class="form-control" autocomplete="off" id="empresa" placeholder="Nome da Empresa"
+                                   onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('endereco').focus(); }">
                         </div>
 
+                        <!-- Dados do ENDEREÇO -->
                         <div class="form-group col-4">
                             <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('endereco')}" >
                                 <span class="validation-message" th:errors="*{endereco}"></span>
                             </div>
                             <label for="endereco" class="lblCliente">ENDEREÇO:</label>
-                            <input type="text" th:field="*{endereco}" class="form-control" autocomplete="off" id="endereco" placeholder="Endereço">
+                            <input type="text" th:field="*{endereco}" class="form-control" autocomplete="off" id="endereco" placeholder="Endereço"
+                                   onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('bairro').focus(); }">
                         </div>
+
+                        <!-- Dados do BAIRRO -->
                         <div class="form-group col-4">
                             <label class="lblCliente">BAIRRO</label>
                             <select class="form-control" th:field="*{bairro}">
@@ -64,29 +71,37 @@
                             </select>
                         </div>
 
+                        <!-- Dados do CONTATO -->
                         <div class="form-group col-4">
                             <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('contato')}" >
                                 <span class="validation-message" th:errors="*{contato}"></span>
                             </div>
                             <label for="contato" class="lblCliente">NOME DO CONTATO:</label>
-                            <input type="text" th:field="*{contato}" class="form-control" autocomplete="off" id="contato" placeholder="Contato">
+                            <input type="text" th:field="*{contato}" class="form-control" autocomplete="off" id="contato" placeholder="Contato"
+                                   onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('telefone').focus(); }">
                         </div>
 
+                        <!-- Dados do TELEFONE -->
                         <div class="form-group col-4">
                             <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('telefone')}" >
                                 <span class="validation-message" th:errors="*{telefone}"></span>
                             </div>
                             <label for="telefone" class="lblCliente">TELEFONE:</label>
-                            <input type="text" th:field="*{telefone}" class="form-control" autocomplete="off" id="telefone" placeholder="Telefone">
+                            <input type="text" th:field="*{telefone}" class="form-control" autocomplete="off" id="telefone" placeholder="Telefone"
+                                   onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('email').focus(); }">
                         </div>
 
+                        <!-- Dados do EMAIL -->
                         <div class="form-group col-12">
                             <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('email')}" >
                                 <span class="validation-message" th:errors="*{email}"></span>
                             </div>
                             <label for="email" class="lblCliente">E-MAIL:</label>
-                            <input type="email" th:field="*{email}" class="form-control" autocomplete="off" id="email" placeholder="E-mail">
+                            <input type="email" th:field="*{email}" class="form-control" autocomplete="off" id="email" placeholder="E-mail"
+                                   onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('informacao').focus(); }">
                         </div>
+
+                        <!-- Dados do DESCRIÇÃO -->
                         <div class="form-group col-8">
                             <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('informacao')}" >
                                 <span class="validation-message" th:errors="*{informacao}"></span>
@@ -94,37 +109,52 @@
                             <label for="informacao" class="lblCliente">DESCRIÇÃO DA VISITA:</label>
                             <textarea th:field="*{informacao}" class="form-control" rows="5" id="informacao" placeholder="Informação sobre a visita"></textarea>
                         </div>
-
                     </div>
 
+                    <!-- Dados do SISTEMA -->
                     <div class="row">
-                        <div class="form-group col-4">
-                            <label for="temSistema">TEM SISTEMA DE AUTOMAÇÃO:</label>
+                        <div class="form-group col-4" >
+                            <label for="temSistema" class="lblCliente">TEM SISTEMA DE AUTOMAÇÃO:</label>
                             <select class="form-control" id="temSistema" name="temSistema" th:field="*{temSistema}">
                                 <option th:each="visita : ${sim}" th:value="${visita}" th:text="${visita}"></option>
                             </select>
                         </div>
 
+                        <!-- Dados do MOTIVO -->
                         <div class="form-group col-4">
                             <label for="motivo" class="lblCliente">MOTIVO:</label>
-                            <input type="text" th:field="*{motivo}" class="form-control" autocomplete="off" id="motivo" placeholder="Motivo">
+                            <input type="text" th:field="*{motivo}" class="form-control" autocomplete="off" id="motivo" placeholder="Motivo"
+                                   onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('Automacao').focus(); }">
                         </div>
 
+                        <!-- Dados do NOME DA EMPRESA  -->
                         <div class="form-group col-4">
                             <label for="Automacao" class="lblCliente">NOME DA EMPRESA DE AUTOMAÇÃO:</label>
-                            <input type="text" th:field="*{nomeEmpresaAutomacao}" class="form-control" autocomplete="off" id="Automacao" placeholder="Nome Empresa de Automação">
+                            <input type="text" th:field="*{nomeEmpresaAutomacao}" class="form-control" autocomplete="off" id="Automacao" placeholder="Nome Empresa de Automação"
+                                   onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('Sistema').focus(); }">
                         </div>
 
+                        <!-- Dados do TIPO DO SISTEMA  -->
                         <div class="form-group col-4">
-                            <label for="Sistema" class="lblCliente">QUAL TIPO DO SISTEMA:</label>
-                            <input type="text" th:field="*{qualSistema}" class="form-control" autocomplete="off" id="Sistema" placeholder="Qual Sistema utiliza (ECF, NFe, NFCe, outros)">
+                            <label for="tipoSistema" class="lblCliente">TIPO DO SISTEMA:</label>
+                            <select class="form-control" id="tipoSistema" name="tipoSistema" th:field="*{tipoSistema}">
+                                <option th:each="tipo : ${tiposSistema}" th:value="${tipo}" th:text="${tipo}"></option>
+                                <option value="Outros">OUTROS</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-4">
+                            <label for="outrosTipoSistema" class="lblCliente">ESPECIFIQUE O TIPO:</label>
+                            <input type="text" class="form-control" id="outrosTipoSistema" name="outrosTipoSistema" placeholder="Especifique o tipo" style="display: none;">
                         </div>
 
+                        <!-- Dados do TEMPO DE SISTEMA -->
                         <div class="form-group col-4">
                             <label for="tempodoSistema" class="lblCliente">QUANTO TEMPO TEM O SISTEMA:</label>
-                            <input type="text" th:field="*{tempodoSistema}" class="form-control" autocomplete="off" id="tempodoSistema" placeholder="Há quanto tempo utiliza">
+                            <input type="text" th:field="*{tempodoSistema}" class="form-control" autocomplete="off" id="tempodoSistema" placeholder="Há quanto tempo utiliza"
+                                   onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('satisfacao').focus(); }">
                         </div>
 
+                        <!-- Dados do SATISFAÇÃO -->
                         <div class="form-group col-4">
                             <label for="satisfacao" class="lblCliente">SATISFAÇÃO COM O SISTEMA:</label>
                             <select class="form-control" id="satisfacao" name="satisfacao" th:field="*{satisfacao}">
@@ -132,6 +162,7 @@
                             </select>
                         </div>
 
+                        <!-- Dados do TEM SUPORTE -->
                         <div class="form-group col-4">
                             <label for="suporte" class="lblCliente">TEM SUPORTE?</label>
                             <select class="form-control" id="suporte" name="suporte" th:field="*{suporte}">
@@ -139,6 +170,7 @@
                             </select>
                         </div>
 
+                        <!-- Dados do RECEBIMENTOS DO CARTAO -->
                         <div class="form-group col-4">
                             <label for="cartao" class="lblCliente">POSSUI RECEBIMENTO DE CARTÃO:</label>
                             <select class="form-control" id="cartao" name="cartao" th:field="*{cartao}">
@@ -146,31 +178,67 @@
                             </select>
                         </div>
 
+                        <!-- Dados do TIPO DE RECEBIMENTO -->
                         <div class="form-group col-4">
                             <label for="recebimento" class="lblCliente">TIPO DO RECEBIMENTO:</label>
-                            <input type="text" th:field="*{recebimento}" class="form-control" autocomplete="off" id="recebimento" placeholder="Qual tipo de recebimento? TEF, POS, outros">
+                            <input type="text" th:field="*{recebimento}" class="form-control" autocomplete="off" id="recebimento" placeholder="Qual tipo de recebimento? TEF, POS, outros"
+                                   onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('dataRetorno').focus(); }">
                         </div>
 
+                        <!-- Dados do RETORNO -->
                         <div class="form-group col-4">
                             <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('dataRetorno')}" >
                                 <span class="validation-message" th:errors="*{dataRetorno}"></span>
                             </div>
                             <label for="dataRetorno" class="lblCliente">RETORNO:</label>
-                            <input type="text" th:field="*{dataRetorno}" class="form-control" autocomplete="off" id="dataRetorno" placeholder="Data do Retorno exemplo 25-10-23">
+                            <input type="text" th:field="*{dataRetorno}" class="form-control" autocomplete="off" id="dataRetorno" placeholder="Data do Retorno exemplo 25-10-23"
+                                   onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('bairro').focus(); }">
                         </div>
 
+                        <!-- Dados do STATUS VISITA -->
                         <div class="form-group col-4">
                             <label for="statusVisita" class="lblCliente">STATUS DA VISITA:</label>
                             <select class="form-control" id="statusVisita" name="statusVisita" th:field="*{statusVisita}">
-                                <option th:each="visita : ${statusVisita}" th:value="${visita}" th:text="${visita}"></option>
+                                <option th:each="visita : ${statusVisita}" th:value="${visita}" th:text="${visita}"
+                                ></option>
                             </select>
                         </div>
                     </div>
+
                     <button type="submit" class="btn btn-success btn-rounded mt-4">SALVAR INFORMAÇÕES</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<script>
+    const form = document.querySelector('form');
+    const fields = form.querySelectorAll('input, select, textarea');
+    fields.forEach((field, index) => {
+        field.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                const nextField = fields[index + 1];
+                if (nextField) {
+                    nextField.focus();
+                } else {
+                    form.submit();
+                }
+            }
+        });
+    });
+
+    document.getElementById("tipoSistema").addEventListener("change", function() {
+    var selectedOption = this.options[this.selectedIndex].value;
+    var outrosTipoSistemaField = document.getElementById("outrosTipoSistema");
+
+    if (selectedOption === "Outros") {
+        outrosTipoSistemaField.style.display = "block";
+    } else {
+        outrosTipoSistemaField.style.display = "none";
+    }
+});
+</script>
+
 </body>
 </html>

@@ -3,6 +3,7 @@ package com.autocom.helpdesk.controllers;
 import com.autocom.helpdesk.enums.Prioridade;
 import com.autocom.helpdesk.enums.StatusTicket;
 import com.autocom.helpdesk.model.Chamado;
+import com.autocom.helpdesk.model.Cliente;
 import com.autocom.helpdesk.repository.ChamadoRepository;
 import com.autocom.helpdesk.repository.ClienteRepository;
 import com.autocom.helpdesk.repository.TecnicoRepository;
@@ -16,6 +17,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/ticket")
@@ -41,13 +45,20 @@ public class Chamados {
     }
 
     @GetMapping("/criar")
-    public ModelAndView ticket(Chamado chamado){
+    public ModelAndView ticket(Chamado chamado) {
         ModelAndView mv = new ModelAndView("chamados/ticket");
         mv.addObject("statusChamados", StatusTicket.values());
         mv.addObject("prioridade", Prioridade.values());
         mv.addObject("tecnicos", tecnicoRepository.findAll());
+
+        // Obtenha a lista de clientes e ordene-a em ordem alfabética pelo nome
+        List<Cliente> listaClientes = clienteRepository.findAll()
+                .stream()
+                .sorted(Comparator.comparing(Cliente::getNome))
+                .collect(Collectors.toList());
+
+        mv.addObject("listaClientes", listaClientes);
         mv.addObject("tickets", chamado);
-        mv.addObject("listaClientes", clienteRepository.findAll());
         return mv;
     }
 

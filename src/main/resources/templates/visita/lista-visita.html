@@ -40,6 +40,7 @@
                                         <th scope="col">DATA DA VISITA</th>
                                         <th scope="col">VISITA</th>
                                         <th scope="col">NOME DA EMPRESA</th>
+                                        <th scope="col">DATA DE RETORNO</th>
                                         <th scope="col">AÇÃO</th>
                                     </tr>
                                     </thead>
@@ -49,6 +50,7 @@
                                         <td th:text="${visita.dataVisita}"></td>
                                         <td th:text="${visita.nomeVisitante}"></td>
                                         <td th:text="${visita.nomeEmpresa}"></td>
+                                        <td th:text="${visita.dataRetorno}"></td>
                                         <td><a class="btn btn-dark" th:href="@{visualizar/{id}(id=${visita.id})}">VISUALIZAR</a></td>
                                     </tr>
                                     </tbody>

@@ -2,16 +2,14 @@ package com.autocom.helpdesk.controllers;
 
 import com.autocom.helpdesk.enums.SimNao;
 import com.autocom.helpdesk.enums.StatusVisita;
+import com.autocom.helpdesk.enums.TipoSistema;
 import com.autocom.helpdesk.model.Visita;
 import com.autocom.helpdesk.repository.BairroRepository;
 import com.autocom.helpdesk.repository.VisitaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -54,12 +52,16 @@ public class VisitaController {
         visita.setInformacao(visita.getInformacao().toUpperCase());
         visita.setMotivo(visita.getMotivo().toUpperCase());
         visita.setNomeEmpresaAutomacao(visita.getNomeEmpresaAutomacao().toUpperCase());
-        visita.setQualSistema(visita.getQualSistema().toUpperCase());
         visita.setTempodoSistema(visita.getTempodoSistema().toUpperCase());
         visita.setRecebimento(visita.getRecebimento().toUpperCase());
         visita.setDataRetorno(visita.getDataRetorno().toUpperCase());
         visitaRepository.save(visita);
         return new ModelAndView("redirect:/visita/list-visita");
+    }
+
+    @ModelAttribute("tiposSistema")
+    public TipoSistema[] getTiposSistema() {
+        return TipoSistema.values();
     }
 
 

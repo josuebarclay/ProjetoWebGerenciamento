@@ -35,7 +35,8 @@
                         <!-- field nome -->
                         <div class="form-group col-4">
                             <label for="nome" class="lblCliente">NOME:</label>
-                            <input type="text" class="form-control" autocomplete="off" th:field="*{nome}" id="nome" placeholder="Nome: ">
+                            <input type="text" class="form-control" autocomplete="off" th:field="*{nome}" id="nome" placeholder="Nome: "
+                                   onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('email').focus(); }">
                         </div>
                         <!-- field e-mail -->
                         <div class="form-group col-4">

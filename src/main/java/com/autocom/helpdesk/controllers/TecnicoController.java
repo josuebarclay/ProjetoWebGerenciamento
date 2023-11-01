@@ -90,7 +90,7 @@ public class TecnicoController {
         return mv;
     }
 
-    @PostMapping("/editar-cliente")
+    @PostMapping("/editar-tecnico")
     public ModelAndView editar(Tecnico tecnico){
         ModelAndView mv = new ModelAndView("tecnico/editar");
         tecnicoRepository.save(tecnico);

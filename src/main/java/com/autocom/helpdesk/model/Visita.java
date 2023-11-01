@@ -2,6 +2,7 @@ package com.autocom.helpdesk.model;
 
 import com.autocom.helpdesk.enums.SimNao;
 import com.autocom.helpdesk.enums.StatusVisita;
+import com.autocom.helpdesk.enums.TipoSistema;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -51,7 +52,7 @@ public class Visita {
     private String nomeEmpresaAutomacao;
 
     @NotNull(message = "CAMPO OBRIGATORIO")
-    private String qualSistema;
+    private TipoSistema tipoSistema;
     private String tempodoSistema;
     private SimNao satisfacao; //satisfeito com o sistema
     private SimNao suporte; //satisfeito com o suporte
@@ -68,7 +69,7 @@ public class Visita {
 
     public Visita(){}
 
-    public Visita(Integer id, LocalDate dataVisita, String nomeVisitante, String nomeEmpresa, String endereco, String contato, String telefone, String email, String informacao, SimNao temSistema, String motivo, String nomeEmpresaAutomacao, String qualSistema, String tempodoSistema, SimNao satisfacao, SimNao suporte, SimNao cartao, String recebimento, String dataRetorno, String ultimoRetorno, StatusVisita statusVisita, Bairro bairro) {
+    public Visita(Integer id, LocalDate dataVisita, String nomeVisitante, String nomeEmpresa, String endereco, String contato, String telefone, String email, String informacao, SimNao temSistema, String motivo, String nomeEmpresaAutomacao, TipoSistema tipoSistema, String tempodoSistema, SimNao satisfacao, SimNao suporte, SimNao cartao, String recebimento, String dataRetorno, StatusVisita statusVisita, Bairro bairro) {
         this.id = id;
         this.dataVisita = dataVisita;
         this.nomeVisitante = nomeVisitante;
@@ -81,7 +82,7 @@ public class Visita {
         this.temSistema = temSistema;
         this.motivo = motivo;
         this.nomeEmpresaAutomacao = nomeEmpresaAutomacao;
-        this.qualSistema = qualSistema;
+        this.tipoSistema = tipoSistema;
         this.tempodoSistema = tempodoSistema;
         this.satisfacao = satisfacao;
         this.suporte = suporte;
@@ -188,12 +189,12 @@ public class Visita {
         this.nomeEmpresaAutomacao = nomeEmpresaAutomacao;
     }
 
-    public String getQualSistema() {
-        return qualSistema;
+    public TipoSistema getTipoSistema() {
+        return tipoSistema;
     }
 
-    public void setQualSistema(String qualSistema) {
-        this.qualSistema = qualSistema;
+    public void setTipoSistema(TipoSistema tipoSistema) {
+        this.tipoSistema = tipoSistema;
     }
 
     public String getTempodoSistema() {

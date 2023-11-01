@@ -35,19 +35,22 @@
                         <!-- field nome -->
                         <div class="form-group col-4">
                             <label for="nome" class="lblCliente">NOME:</label>
-                            <input type="text" class="form-control" autocomplete="off" th:field="*{nome}" id="nome" placeholder="Nome: ">
+                            <input type="text" class="form-control" autocomplete="off" th:field="*{nome}" id="nome" placeholder="Nome: "
+                                   onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('email').focus(); }">
                         </div>
                         <!-- field e-mail -->
                         <div class="form-group col-4">
                             <label for="email" class="lblCliente">E-MAIL:</label>
-                            <input type="email" class="form-control" autocomplete="off" th:field="*{email}" id="email" placeholder="E-Mail: ">
+                            <input type="email" class="form-control" autocomplete="off" th:field="*{email}" id="email" placeholder="E-Mail: "
+                                   onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('arquivo').focus(); }">
                         </div>
 
                     </div>
 
                     <div class="form-group col-6">
                         <label for="arquivo" class="lblCliente">IMAGEM PERFIL:</label>
-                        <input type="file" class="form-control" name="file" id="arquivo">
+                        <input type="file" class="form-control" name="file" id="arquivo"
+                               onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('perfil').focus(); }">
                     </div>
 
                     <div class="form-group col-6">

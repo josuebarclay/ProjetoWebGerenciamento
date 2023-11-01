@@ -44,7 +44,8 @@
                                 <label class="validation-message" th:errors="*{titulo}"></label>
                             </div>
                             <label for="nome" class="lblCliente">TÍTULO DO CHAMADO:</label>
-                            <input type="text" class="form-control" autocomplete="off" th:field="*{titulo}"  placeholder="Ex: Impressora com defeito"/>
+                            <input type="text" class="form-control" autocomplete="off" th:field="*{titulo}"  placeholder="Ex: Impressora com defeito"
+                                   onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('status').focus(); }"/>
                         </div>
 
                         <!-- Campo de Status com validação -->
@@ -70,7 +71,8 @@
                                 <label class="validation-message" th:errors="*{observacao}"></label>
                             </div>
                             <label for="nome" class="lblCliente">DESCRIÇÃO:</label>
-                            <input th:field="*{observacao}" type="text" class="form-control" autocomplete="off"  id="nome" placeholder="Ex: Lorem Ipsum"/>
+                            <input th:field="*{observacao}" type="text" class="form-control" autocomplete="off"  id="nome" placeholder="Ex: Lorem Ipsum"
+                                   onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('tecnico').focus(); }"/>
                         </div>
 
                         <!-- Campo de tecnicos com validação -->
