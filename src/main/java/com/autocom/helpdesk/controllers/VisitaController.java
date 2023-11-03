@@ -6,13 +6,18 @@ import com.autocom.helpdesk.enums.TipoSistema;
 import com.autocom.helpdesk.model.Visita;
 import com.autocom.helpdesk.repository.BairroRepository;
 import com.autocom.helpdesk.repository.VisitaRepository;
+import com.autocom.helpdesk.service.VisitaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
+import java.util.List;
 
 @Controller
 @RequestMapping("/visita")
@@ -20,6 +25,11 @@ public class VisitaController {
 
     @Autowired
     private VisitaRepository visitaRepository;
+
+
+
+    @Autowired
+    private VisitaService visitaService;
 
     @Autowired
     private BairroRepository bairroRepository;
@@ -54,7 +64,7 @@ public class VisitaController {
         visita.setNomeEmpresaAutomacao(visita.getNomeEmpresaAutomacao().toUpperCase());
         visita.setTempodoSistema(visita.getTempodoSistema().toUpperCase());
         visita.setRecebimento(visita.getRecebimento().toUpperCase());
-        visita.setDataRetorno(visita.getDataRetorno().toUpperCase());
+        visitaService.calcularDataRetorno30Dias(visita);
         visitaRepository.save(visita);
         return new ModelAndView("redirect:/visita/list-visita");
     }
@@ -86,5 +96,14 @@ public class VisitaController {
         visitaRepository.save(visita);
         return new ModelAndView("redirect:/visita/list-visita");
     }
+
+    @GetMapping("/buscar-por-mes")
+    public String buscarClientesPorMes(@RequestParam int mes, Model model) {
+        List<Visita> clientes = visitaService.getClientesParaRetornoPorMes(mes);
+        model.addAttribute("clientes", clientes);
+        return "relatorio/retorno-visita"; // Redireciona para a página de relatório na pasta "relatorio"
+    }
+
+
 
 }

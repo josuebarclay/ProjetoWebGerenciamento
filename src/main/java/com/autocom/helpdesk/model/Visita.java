@@ -12,8 +12,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 
-
-
 @Entity
 public class Visita {
 
@@ -59,9 +57,9 @@ public class Visita {
     private SimNao cartao;
     private String recebimento; //qual o tipo do recebimento
 
-    @NotNull(message = "CAMPO OBRIGATORIO")
-    private String dataRetorno;
-    private StatusVisita statusVisita;
+
+    private LocalDate dataRetorno30Dias = LocalDate.now();
+    private StatusVisita statusVisita ;
 
     @ManyToOne
     @JoinColumn(name = "bairro_id_fk") // O nome da coluna deve corresponder ao nome da coluna na tabela do banco de dados
@@ -69,7 +67,7 @@ public class Visita {
 
     public Visita(){}
 
-    public Visita(Integer id, LocalDate dataVisita, String nomeVisitante, String nomeEmpresa, String endereco, String contato, String telefone, String email, String informacao, SimNao temSistema, String motivo, String nomeEmpresaAutomacao, TipoSistema tipoSistema, String tempodoSistema, SimNao satisfacao, SimNao suporte, SimNao cartao, String recebimento, String dataRetorno, StatusVisita statusVisita, Bairro bairro) {
+    public Visita(Integer id, LocalDate dataVisita, String nomeVisitante, String nomeEmpresa, String endereco, String contato, String telefone, String email, String informacao, SimNao temSistema, String motivo, String nomeEmpresaAutomacao, TipoSistema tipoSistema, String tempodoSistema, SimNao satisfacao, SimNao suporte, SimNao cartao, String recebimento, LocalDate dataRetorno30Dias, StatusVisita statusVisita, Bairro bairro) {
         this.id = id;
         this.dataVisita = dataVisita;
         this.nomeVisitante = nomeVisitante;
@@ -88,7 +86,7 @@ public class Visita {
         this.suporte = suporte;
         this.cartao = cartao;
         this.recebimento = recebimento;
-        this.dataRetorno = dataRetorno;
+        this.dataRetorno30Dias = dataRetorno30Dias;
         this.statusVisita = statusVisita;
         this.bairro = bairro;
     }
@@ -237,14 +235,6 @@ public class Visita {
         this.recebimento = recebimento;
     }
 
-    public String getDataRetorno() {
-        return dataRetorno;
-    }
-
-    public void setDataRetorno(String dataRetorno) {
-        this.dataRetorno = dataRetorno;
-    }
-
     public StatusVisita getStatusVisita() {
         return statusVisita;
     }
@@ -259,6 +249,14 @@ public class Visita {
 
     public void setBairro(Bairro bairro) {
         this.bairro = bairro;
+    }
+
+    public LocalDate getDataRetorno30Dias() {
+        return dataRetorno30Dias;
+    }
+
+    public void setDataRetorno30Dias(LocalDate dataRetorno30Dias) {
+        this.dataRetorno30Dias = dataRetorno30Dias;
     }
 }
 
