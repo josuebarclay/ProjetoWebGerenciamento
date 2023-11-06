@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
+
   <head th:replace="~{fragments/head :: headImports}"></head>
 <body>
   <div class="container-scroller">
@@ -78,7 +79,7 @@
                     <tbody>
                     <tr th:each="chamado : ${chamadosList}">
                       <td th:text="${chamado.id}"></td>
-                      <td th:text="${chamado.dataAbertura}"></td>
+                      <td th:text="${#temporals.format(chamado.dataAbertura, 'dd MMMM yyyy')}"></td>
                       <td th:text="${chamado.cliente.nome}"></td>
                       <td th:text="${chamado.titulo}"></td>
                       <td th:text="${chamado.prioridade}"></td>
@@ -132,6 +133,7 @@
   <!-- container-scroller -->
 
   <!-- plugins:js -->
+
   <script src="/vendors/js/vendor.bundle.base.js"></script>
 
   <!-- End plugin js for this page -->
@@ -142,6 +144,11 @@
   <!-- endinject -->
   <!-- Custom js for this page-->
   <script src="/js/dashboard.js"></script>
+  <script src="/js/datatables.min.js"></script>
+
+
+
+
 
   <!-- End custom js for this page-->
 </body>

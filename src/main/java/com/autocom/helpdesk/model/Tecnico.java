@@ -8,6 +8,7 @@ import java.util.List;
 
 @Entity
 public class Tecnico extends Pessoa{
+    private static final long serialVersionUID = 1L;
 
     @OneToMany(mappedBy = "tecnico")
     public List<Chamado> chamados = new ArrayList<>();

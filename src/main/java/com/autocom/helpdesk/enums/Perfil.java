@@ -2,9 +2,9 @@ package com.autocom.helpdesk.enums;
 
 public enum Perfil {
 
-    ADMIN("Administrador"),
-    TECNICO("Tecnico"),
-    CLIENTE("Cliente");
+    ADMIN("ADMINISTRADOR"),
+    TECNICO("TECNICO"),
+    CLIENTE("CLIENTE");
 
     private String perfil;
 

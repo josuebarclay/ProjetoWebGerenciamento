@@ -39,7 +39,7 @@
                                         <div class="card-body">
                                             <h5 class="card-title" th:text="${chamado.cliente.nome}"></h5>
                                             <p class="card-text">TITULO: <span th:text="${chamado.titulo}"></span></p>
-                                            <p class="card-text">DATA DE ABERTURA: <span th:text="${chamado.dataAbertura}"></span></p>
+                                            <p class="card-text">DATA DE ABERTURA: <span th:text="${#temporals.format(chamado.dataAbertura, 'dd MMMM yyyy')}"></span></p>
                                             <p class="card-text">PRIORIDADE: <span th:text="${chamado.prioridade}"></span></p>
                                             <p class="card-text">STATUS: <span th:text="${chamado.status}"></span></p>
                                             <p class="card-text">TECNÍCO: <span th:text="${chamado.tecnico.nome}"></span></p>

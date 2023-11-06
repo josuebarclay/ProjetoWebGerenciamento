@@ -34,8 +34,32 @@
                         <div class="card table-bg">
                             <div class="card-people mt-auto">
                                 <h4 class="m-4">Visitas cadastradas no sistema</h4>
+                                <form th:action="@{/visita/buscar-por-mes}" method="get" class="form-inline">
+                                    <label label class="my-1 mr-2" for="mes">Selecione o Mês:</label>
+                                    <select class="custom-select my-1 mr-sm-2"  id="mes" name="mes">
+                                        <option value="1">Janeiro</option>
+                                        <option value="2">Fevereiro</option>
+                                        <option value="3">Março</option>
+                                        <option value="4">Abril</option>
+                                        <option value="5">Maio</option>
+                                        <option value="6">Junho</option>
+                                        <option value="7">Julho</option>
+                                        <option value="8">Agosto</option>
+                                        <option value="9">Setembro</option>
+                                        <option value="10">Outubro</option>
+                                        <option value="11">Novembro</option>
+                                        <option value="12">Dezembro</option>
+                                    </select>
+                                    <button class="btn btn-dark my-1" type="submit">Buscar</button>
+                                </form>
+
+
+                                <div class="row">
+                                    <div class="col-md-12 grid-margin stretch-card">
+                                        <div class="card table-bg">
+                                            <div class="card-people mt-auto">
                                 <table class="table table-striped">
-                                    <thead>
+                                    <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">ID</th>
                                         <th scope="col">DATA DA VISITA</th>
@@ -47,51 +71,18 @@
                                     <tbody>
                                     <tr th:each="visita : ${visitas}">
                                         <td th:text="${visita.id}"></td>
-                                        <td th:text="${visita.dataVisita}"></td>
+                                        <td th:text="${#temporals.format(visita.dataVisita, 'dd MMMM yyyy')}"></td>
                                         <td th:text="${visita.nomeVisitante}"></td>
                                         <td th:text="${visita.nomeEmpresa}"></td>
                                         <td><a class="btn btn-dark" th:href="@{visualizar/{id}(id=${visita.id})}">VISUALIZAR</a></td>
                                     </tr>
                                     </tbody>
                                 </table>
-                                <nav class="m-4">
-                                    <ul class="pagination">
-                                        <li class="page-item disabled">
-                                            <a class="page-link">Previous</a>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item " aria-current="page">
-                                            <a class="page-link" href="#">2</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">Next</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                                    <form th:action="@{/visita/buscar-por-mes}" method="get" class="form">
-                                        <div class="row">
-                                            <div class="form-group col-md-4" >
-                                        <label for="mes">Selecione o Mês:</label>
-                                        <select id="mes" name="mes">
-                                            <option value="1">Janeiro</option>
-                                            <option value="2">Fevereiro</option>
-                                            <option value="3">Março</option>
-                                            <option value="4">Abril</option>
-                                            <option value="5">Maio</option>
-                                            <option value="6">Junho</option>
-                                            <option value="7">Julho</option>
-                                            <option value="8">Agosto</option>
-                                            <option value="9">Setembro</option>
-                                            <option value="10">Outubro</option>
-                                            <option value="11">Novembro</option>
-                                            <option value="12">Dezembro</option>
-                                        </select>
                                             </div>
                                         </div>
-                                        <button type="submit">Buscar</button>
-                                    </form>
-                            </div>
+                                    </div>
+                                </div>
+                        </div>
                         </div>
                     </div>
                     <div class="col-md-12 grid-margin transparent">

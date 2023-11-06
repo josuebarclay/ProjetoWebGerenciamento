@@ -93,6 +93,7 @@ public class TecnicoController {
     @PostMapping("/editar-tecnico")
     public ModelAndView editar(Tecnico tecnico){
         ModelAndView mv = new ModelAndView("tecnico/editar");
+        tecnico.setNome(tecnico.getNome().toUpperCase());
         tecnicoRepository.save(tecnico);
         return tecnicolist();
     }

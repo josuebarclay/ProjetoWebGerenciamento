@@ -93,6 +93,7 @@ public class ClienteController {
     @PostMapping("/editar-cliente")
     public ModelAndView editar(Cliente cliente){
         ModelAndView mv = new ModelAndView("cliente/editar");
+        cliente.setNome(cliente.getNome().toUpperCase());
         clienteRepository.save(cliente);
         return clientesList();
     }

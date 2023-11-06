@@ -35,7 +35,7 @@
                                 <h4 class="m-4">INFORMAÇÕES DE RETORNO</h4>
                                 <table class="table table-striped">
                                     <thead>
-                                    <tr>
+                                    <tr class="thead-dark">
                                         <th scope="col">ID</th>
                                         <th scope="col">Data da Visita</th>
                                         <th scope="col">Nome do Visitante</th>
@@ -46,10 +46,10 @@
                                     <tbody>
                                     <tr th:each="cliente : ${clientes}">
                                         <td th:text="${cliente.id}"></td>
-                                        <td th:text="${cliente.dataVisita}"></td>
+                                        <td th:text="${#temporals.format(cliente.dataVisita, 'dd MMMM yyyy')}"></td>
                                         <td th:text="${cliente.nomeVisitante}"></td>
                                         <td th:text="${cliente.nomeEmpresa}"></td>
-                                        <td th:text="${cliente.dataRetorno30Dias}"></td>
+                                        <td th:text="${#temporals.format(cliente.dataRetorno30Dias, 'dd MMMM yyyy')}"></td>
                                     </tr>
                                     </tbody>
                                 </table>

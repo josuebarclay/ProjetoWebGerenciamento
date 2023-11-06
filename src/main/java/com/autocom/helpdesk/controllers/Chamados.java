@@ -79,7 +79,7 @@ public class Chamados {
             chamadoRepository.save(chamado);
             return chamadoHome(1);
         }
-        return mv;
+        return chamadoHome(1);
         }
 
 

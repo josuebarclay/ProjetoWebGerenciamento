@@ -27,7 +27,7 @@ public class EmailService {
         try {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom(emailModel.getEmailFrom());
-            message.setTo("suporte3@autocominformatica.com");
+            message.setTo("vendas@autocominformatica.com");
             message.setSubject(emailModel.getSubject());
             message.setText("Mensagem: " + emailModel.getText() + "\n"
                     + "Telefone: " + emailModel.getTelefone() + "\n"

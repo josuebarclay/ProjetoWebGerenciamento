@@ -34,27 +34,30 @@
                             <div class="card-people mt-auto">
                                 <h4 class="m-4">E-mails Enviados</h4>
                                 <table class="table table-striped">
-                                    <thead>
+                                    <thead class="thead-dark">
                                     <tr>
                                         <th>ID</th>
-                                        <th>Remetente</th>
-                                        <th>Destinatário</th>
-                                        <th>Assunto</th>
-                                        <th>Data de Envio</th>
-                                        <th>Status</th>
+                                        <th>REMETENTE</th>
+                                        <th>NOME</th>
+                                        <th>TELEFONE</th>
+                                        <th>ASSUNTO</th>
+                                        <th>DATA DE ENVIO</th>
+                                        <th>STATUS</th>
                                     </tr>
-                                    </thead>
+                                    </thead >
                                     <tbody>
                                     <tr th:each="email : ${contatos}">
                                         <td th:text="${email.emailId}"></td>
                                         <td th:text="${email.emailFrom}"></td>
+                                        <td th:text="${email.ownrRef}"></td>
                                         <td th:text="${email.telefone}"></td>
                                         <td th:text="${email.subject}"></td>
-                                        <td th:text="${email.sendDateEmail}"></td>
+                                        <td th:text="${#temporals.format(email.sendDateEmail, 'dd MMMM yyyy')}"></td>
                                         <td th:text="${email.statusEmail}"></td>
                                     </tr>
                                     </tbody>
                                 </table>
+                                <a href="/autocom/autocom" class="btn btn-dark">Voltar</a>
                             </div>
                         </div>
                     </div>

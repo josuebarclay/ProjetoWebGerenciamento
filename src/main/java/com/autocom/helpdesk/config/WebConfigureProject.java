@@ -1,5 +1,6 @@
 package com.autocom.helpdesk.config;
 
+import com.autocom.helpdesk.enums.Perfil;
 import com.autocom.helpdesk.service.ClienteUserDetailsService;
 import com.autocom.helpdesk.service.TecnicoUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
+
+import static org.hibernate.criterion.Restrictions.and;
 
 @Configuration
 @EnableWebSecurity
@@ -40,25 +43,36 @@ public class WebConfigureProject extends WebSecurityConfigurerAdapter {
                 .antMatchers("/images/**").permitAll()
                 .antMatchers("/vendors/**").permitAll()
                 .antMatchers("/fonts/**").permitAll()
+                .antMatchers("/tecnico/**","/cliente/**","/bairro/**","/visita/**","/ticket/**","/list-filtro/**").hasAnyAuthority(String.valueOf(Perfil.TECNICO.name()), Perfil.ADMIN.name())
                 .anyRequest().authenticated();
 
         http.formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/autocom/autocom") // Redirecionar para a página inicial do técnico
+                .defaultSuccessUrl("/autocom/autocom") // Redirecionar para a página inicial do técnico por padrão
+                .successHandler((request, response, authentication) -> {
+                    // Redirecionar para /boletos se o usuário tiver a função "CLIENTE"
+                    if (authentication.getAuthorities().stream().anyMatch(a -> a.getAuthority().equals("CLIENTE"))) {
+                        response.sendRedirect("/boletos/list-boletos");
+                    } else {
+                        response.sendRedirect("/autocom/autocom"); // Redirecionar para a página do técnico se não for cliente
+                    }
+                })
                 .permitAll();
 
         http.rememberMe()
                 .key("keyRemeber");
-
         http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
 
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService(clienteUserDetailsService)
-                .passwordEncoder(new BCryptPasswordEncoder());
-        auth.userDetailsService(tecnicoUserDetailsService)
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth
+                .userDetailsService(clienteUserDetailsService)
+                .passwordEncoder(new BCryptPasswordEncoder())
+                .and()
+                .userDetailsService(tecnicoUserDetailsService)
                 .passwordEncoder(new BCryptPasswordEncoder());
     }
+
 }

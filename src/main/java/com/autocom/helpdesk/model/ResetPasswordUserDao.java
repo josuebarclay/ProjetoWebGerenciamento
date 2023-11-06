@@ -2,8 +2,10 @@ package com.autocom.helpdesk.model;
 
 
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
-public class ResetPasswordUserDao {
+public class ResetPasswordUserDao implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @NotNull
     private String senhaAtual;

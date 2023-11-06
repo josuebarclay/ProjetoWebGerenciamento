@@ -1,6 +1,8 @@
 package com.autocom.helpdesk.controllers;
 
 import com.autocom.helpdesk.DTO.EmailDTO;
+import com.autocom.helpdesk.enums.Prioridade;
+import com.autocom.helpdesk.enums.StatusEmail;
 import com.autocom.helpdesk.model.EmailModel;
 import com.autocom.helpdesk.repository.EmailRepository;
 import com.autocom.helpdesk.service.EmailService;
@@ -31,9 +33,9 @@ public class AutocomController {
         return mv;
     }
 
-    @GetMapping("/relatorio")
+    @GetMapping("/relatorio-contato")
     public ModelAndView relatorioContatos() {
-        ModelAndView mv = new ModelAndView("autocom/relatorio-contato");
+        ModelAndView mv = new ModelAndView("relatorio/relatorio-contato");
         List<EmailModel> contatos = emailRepository.findAll();
         mv.addObject("contatos", contatos);
         return mv;
@@ -52,7 +54,6 @@ public class AutocomController {
         ModelAndView mv = new ModelAndView("sucesso/sucesso-email");
         return mv;
     }
-
 
 }
 

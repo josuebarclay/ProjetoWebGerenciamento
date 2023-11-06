@@ -41,6 +41,16 @@
                                    onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('email').focus(); }">
                             <div class="alert alert-danger alert-dismissible fade show" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
                         </div>
+                    <div class="row">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+                        <!-- Campo nome com validação -->
+                        <div class="form-group col-4">
+                            <label for="nome" class="lblCliente">NOME:</label>
+                            <input type="text" class="form-control" autocomplete="off" th:field="*{nome}" id="nome" placeholder="Nome: "
+                                   onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('email').focus(); }">
+                            <div class="alert alert-danger alert-dismissible fade show" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+                        </div>
 
                         <!-- Campo e-mail com validação -->
                         <div class="form-group col-4">
@@ -91,6 +101,7 @@
         <!-- endinject -->
         <!-- Custom js for this page-->
         <script src="/js/dashboard.js"></script>
+        <script src="/js/datatables.min.js"></script>
         <!-- End custom js for this page-->
 </body>
 </html>

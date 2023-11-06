@@ -5,9 +5,11 @@ import com.autocom.helpdesk.enums.Perfil;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 @MappedSuperclass
-public abstract class Pessoa {
+public abstract class Pessoa implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
