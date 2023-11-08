@@ -31,57 +31,46 @@
                 </div>
                 <!-- conteúdo principal -->
                 <form th:action="@{/tecnico/cadastro-tecnico}" method="post" th:object="${tecnico}" enctype="multipart/form-data">
+                    <inpu type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"></inpu>
                     <div class="row">
-                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-
                         <!-- Campo nome com validação -->
-                        <div class="form-group col-4">
-                            <label for="nome" class="lblCliente">NOME:</label>
-                            <input type="text" class="form-control" autocomplete="off" th:field="*{nome}" id="nome" placeholder="Nome: "
-                                   onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('email').focus(); }">
-                            <div class="alert alert-danger alert-dismissible fade show" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
-                        </div>
-                    <div class="row">
-                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-
-                        <!-- Campo nome com validação -->
-                        <div class="form-group col-4">
-                            <label for="nome" class="lblCliente">NOME:</label>
-                            <input type="text" class="form-control" autocomplete="off" th:field="*{nome}" id="nome" placeholder="Nome: "
-                                   onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('email').focus(); }">
-                            <div class="alert alert-danger alert-dismissible fade show" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
-                        </div>
+                                <div class="form-group col-4">
+                                    <label for="nome" class="lblCliente">NOME:</label>
+                                    <input type="text" class="form-control" autocomplete="off" th:field="*{nome}" id="nome" placeholder="Nome: "
+                                           onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('email').focus(); }">
+                                    <div class="alert alert-danger alert-dismissible fade show" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></div>
+                                </div>
 
                         <!-- Campo e-mail com validação -->
-                        <div class="form-group col-4">
-                            <label for="email" class="lblCliente">E-MAIL:</label>
-                            <input type="email" class="form-control" autocomplete="off" th:field="*{email}" id="email" placeholder="E-Mail: "
-                                   onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('senha').focus(); }">
-                            <div class="alert alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
-                        </div>
+                                <div class="form-group col-4">
+                                    <label for="email" class="lblCliente">E-MAIL:</label>
+                                    <input type="email" class="form-control" autocomplete="off" th:field="*{email}" id="email" placeholder="E-Mail: "
+                                           onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('senha').focus(); }">
+                                    <div class="alert alert-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+                                </div>
 
                         <!-- Campo senha com validação -->
-                        <div class="form-group col-4">
-                            <label for="senha" class="lblCliente">SENHA:</label>
-                            <input type="password" class="form-control" th:field="*{senha}" id="senha" placeholder="Senha: "
-                                   onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('arquivo').focus(); }">
-                            <div class="alert alert-danger alert-dismissible fade show" th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"></div>
-                        </div>
+                                <div class="form-group col-4">
+                                    <label for="senha" class="lblCliente">SENHA:</label>
+                                    <input type="password" class="form-control" th:field="*{senha}" id="senha" placeholder="Senha: "
+                                           onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('arquivo').focus(); }">
+                                    <div class="alert alert-danger alert-dismissible fade show" th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"></div>
+                                </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-6">
-                            <label for="arquivo" class="lblCliente">IMAGEM PERFIL:</label>
-                            <input type="file" class="form-control" name="file" id="arquivo" placeholder="Senha: "
-                                   onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('perfil').focus(); }">
-                        </div>
+                                <div class="form-group col-6">
+                                    <label for="arquivo" class="lblCliente">IMAGEM PERFIL:</label>
+                                    <input type="file" class="form-control" name="file" id="arquivo" placeholder="Senha: "
+                                           onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('perfil').focus(); }">
+                                </div>
 
                         <!-- Campo perfil -->
-                        <div class="form-group col-6">
-                            <label for="senha" class="lblCliente">PERFIL:</label>
-                            <select name="" id="" class="form-control" th:field="*{perfil}">
-                                <option th:each="perfil : ${perfils}" th:text="${perfil}" th:value="${perfil}"></option>
-                            </select>
-                        </div>
+                                <div class="form-group col-6">
+                                    <label for="senha" class="lblCliente">PERFIL:</label>
+                                    <select name="" id="" class="form-control" th:field="*{perfil}">
+                                        <option th:each="perfil : ${perfils}" th:text="${perfil}" th:value="${perfil}"></option>
+                                    </select>
+                                </div>
                     </div>
 
                     <button type="submit" class="btn btn-success btn-rounded mt-4">SALVAR INFORMAÇÕES</button>

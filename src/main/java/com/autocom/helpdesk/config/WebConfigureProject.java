@@ -43,7 +43,7 @@ public class WebConfigureProject extends WebSecurityConfigurerAdapter {
                 .antMatchers("/images/**").permitAll()
                 .antMatchers("/vendors/**").permitAll()
                 .antMatchers("/fonts/**").permitAll()
-                .antMatchers("/tecnico/**","/cliente/**","/bairro/**","/visita/**","/ticket/**","/list-filtro/**").hasAnyAuthority(String.valueOf(Perfil.TECNICO.name()), Perfil.ADMIN.name())
+                .antMatchers("/tecnico/**","/cliente/**","/bairro/**","/visita/**","/ticket/**","/list-filtro/**","/autocom/**").hasAnyAuthority(String.valueOf(Perfil.TECNICO.name()), Perfil.ADMIN.name())
                 .anyRequest().authenticated();
 
         http.formLogin()

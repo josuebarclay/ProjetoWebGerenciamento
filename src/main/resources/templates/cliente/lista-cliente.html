@@ -53,7 +53,25 @@
                                     </tbody>
                                 </table>
                                 <!-- paginação da tabela -->
-
+                                <nav class="m-4">
+                                    <ul class="pagination">
+                                        <li class="page-item" th:classappend="${clientesList.first ? 'disabled' : ''}">
+                                            <a class="page-link" th:if="${!clientesList.first}" th:href="@{/cliente/list-clientes/(page=1)}">First</a>
+                                        </li>
+                                        <li class="page-item" th:classappend="${clientesList.first ? 'disabled' : ''}">
+                                            <a class="page-link" th:if="${!clientesList.first}" th:href="@{/cliente/list-clientes/(page=${clientesList.number - 1})}">Previous</a>
+                                        </li>
+                                        <li class="page-item" th:each="i : ${#numbers.sequence(1, clientesList.totalPages)}" th:classappend="${i == clientesList.number + 1 ? 'active' : ''}">
+                                            <a class="page-link" th:text="${i}" th:href="@{/cliente/list-clientes/(page=${i})}"></a>
+                                        </li>
+                                        <li class="page-item" th:classappend="${clientesList.last ? 'disabled' : ''}">
+                                            <a class="page-link" th:if="${!clientesList.last}" th:href="@{/cliente/list-clientes/(page=${clientesList.number + 1})}">Next</a>
+                                        </li>
+                                        <li class="page-item" th:classappend="${clientesList.last ? 'disabled' : ''}">
+                                            <a class="page-link" th:if="${!clientesList.last}" th:href="@{/cliente/list-clientes/(page=${clientesList.totalPages})}">Last</a>
+                                        </li>
+                                    </ul>
+                                </nav>
                             </div>
                         </div>
                     </div>
@@ -78,7 +96,21 @@
         <!-- endinject -->
         <!-- Custom js for this page-->
         <script src="/js/dashboard.js"></script>
+        <script src="/js/datatables.min.js"></script>
         <!-- End custom js for this page-->
+<script>
+    document.getElementById("navbar-search-button").addEventListener("click", function() {
+      var searchTerm = document.getElementById("navbar-search-input").value;
+      // Aqui você pode adicionar a lógica para executar a pesquisa com o valor de searchTerm
+      // Por exemplo, você pode fazer uma solicitação Ajax para buscar os resultados e atualizar a tabela.
+      console.log("Termo de pesquisa: " + searchTerm);
+    });
+</script>
+<script>
+    function submitSearchForm() {
+        document.getElementById("search-form").submit();
+    }
+</script>
 
 
 </body>

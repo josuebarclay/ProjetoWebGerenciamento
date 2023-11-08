@@ -273,43 +273,48 @@
         </div>
         <form id="contactForm" th:action="@{/envio-email}" method="post">
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-            <div class="row align-items-stretch mb-5">
+            <div class="row">
 
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="form-group">
                         <!-- Nome input -->
                         <label for="name">NOME:</label>
-                        <input class="form-control" id="name" name="ownrRef" type="text" placeholder="Nome *" data-sb-validations="required" />
+                        <input class="form-control" id="name" name="ownrRef" type="text" placeholder="NOME *" data-sb-validations="required" />
                         <div class="invalid-feedback" data-sb-feedback="name:required">O nome é obrigatório.</div>
                     </div>
-
+                </div>
+                <div class="col-md-3">
                     <div class="form-group">
                         <!-- Email input -->
                         <label for="email">E-MAIL:</label>
-                        <input class="form-control" id="email" name="emailFrom" type="email" placeholder="Email *" data-sb-validations="required,email" />
+                        <input class="form-control" id="email" name="emailFrom" type="email" placeholder="E-MAIL *" data-sb-validations="required,email" />
                         <div class="invalid-feedback" data-sb-feedback="email:required">O e-mail é obrigatório.</div>
                         <div class="invalid-feedback" data-sb-feedback="email:email">O e-mail não é válido.</div>
                     </div>
+                </div>
+                <div class="col-md-3">
 
                     <div class="form-group">
                         <!-- Número input -->
                         <label for="phone">NÚMERO:</label>
-                        <input class="form-control" id="phone" name="telefone" type="tel" placeholder="Número *" data-sb-validations="required" />
+                        <input class="form-control" id="phone" name="telefone" type="tel" placeholder="NÚMERO *" data-sb-validations="required" />
                         <div class="invalid-feedback" data-sb-feedback="phone:required">O número de telefone é obrigatório.</div>
                     </div>
+                </div>
+                <div class="col-md-3">
 
                     <div class="form-group">
                         <!-- Número input -->
                         <label for="subject">TITULO:</label>
-                        <input class="form-control" id="subject" name="subject" type="text" placeholder="titulo *" data-sb-validations="required" />
+                        <input class="form-control" id="subject" name="subject" type="text" placeholder="ASSUNTO *" data-sb-validations="required" />
                         <div class="invalid-feedback" data-sb-feedback="phone:required">O Titulo é obrigatório.</div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row align-items-stretch mb-5">
-                <div class="col-md-6">
-                    <div class="form-group form-group-textarea mb-md-0">
+
+                <div class="col-md-12">
+
+                    <div class="form-group">
                         <!-- Mensagem input -->
                         <label for="message">MENSAGEM:</label>
                         <textarea class="form-control" id="message" name="text" placeholder="Mensagem *" data-sb-validations="required"></textarea>
@@ -322,6 +327,7 @@
             <div class="mt-3">
                 <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium">Enviar</button>
             </div>
+
         </form>
 
     </div>

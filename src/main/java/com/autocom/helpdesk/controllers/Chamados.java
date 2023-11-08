@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Controller
@@ -35,7 +36,7 @@ public class Chamados {
     private ClienteRepository clienteRepository;
 
 
-    @GetMapping("autocom")
+    @GetMapping("/autocom/")
     public ModelAndView chamadoHome(@RequestParam(defaultValue = "1") int page){
         ModelAndView mv = new ModelAndView("home/index");
         Pageable pageReq = PageRequest.of((page -1),5);
@@ -73,15 +74,25 @@ public class Chamados {
             mv.addObject("prioridade", Prioridade.values());
             mv.addObject("tecnicos", tecnicoRepository.findAll());
             mv.addObject("listaClientes", clienteRepository.findAll());
-        }else {
-            chamado.setObservacao(chamado.getObservacao().toUpperCase());
-            chamado.setTitulo(chamado.getTitulo().toUpperCase());
-            chamadoRepository.save(chamado);
-            return chamadoHome(1);
+        } else {
+            // Encontre o cliente com base no nome fornecido no formulário
+            String nomeCliente = chamado.getCliente().getNome();
+            Optional<Cliente> clienteOptional = clienteRepository.findByNome(nomeCliente);
+
+            if (clienteOptional.isPresent()) {
+                Cliente cliente = clienteOptional.get(); // Extrai o Cliente do Optional
+                chamado.setCliente(cliente); // Associe o cliente ao chamado
+                chamado.setObservacao(chamado.getObservacao().toUpperCase());
+                chamado.setTitulo(chamado.getTitulo().toUpperCase());
+                chamadoRepository.save(chamado);
+                return chamadoHome(1);
+            } else {
+                // Cliente não encontrado - você pode tratar esse caso adequadamente
+                // Por exemplo, mostrando uma mensagem de erro no formulário
+            }
         }
         return chamadoHome(1);
-        }
-
+    }
 
 }
 

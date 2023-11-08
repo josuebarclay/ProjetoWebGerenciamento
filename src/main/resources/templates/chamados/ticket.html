@@ -30,16 +30,20 @@
 
                 <form method="post" th:action="@{/ticket/salvarTicket}" th:object="${tickets}" th:modelAttribute="tickets">
                     <div class="row">
-                        <!--Nome cliente -->
-                        <div class="form-group col-3">
+                            <!-- Nome do cliente -->
+                        <div class="form-group col-4">
+                            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('cliente')}">
+                                <label class="validation-message" th:errors="*{cliente.id}"></label>
+                            </div>
                             <label class="lblCliente">NOME DO CLIENTE:</label>
-                            <select class="form-control" th:field="*{cliente}" >
-                                <option th:each="cliente: ${listaClientes}" th:value="${cliente.id}" th:text="${cliente.nome}" th:selected="${cliente.id == chamado.cliente?.id}"></option>
-                            </select>
+                            <input type="text" list="clientes" class="form-control" th:field="*{cliente.nome}" id="clienteInput">
+                            <datalist id="clientes">
+                                <option th:each="cliente: ${listaClientes}" th:value="${cliente.nome}" th:text="${cliente.nome}"></option>
+                            </datalist>
                         </div>
 
                         <!-- Campo de Título com validação -->
-                        <div class="form-group col-3">
+                        <div class="form-group col-4">
                             <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${#fields.hasErrors('titulo')}">
                                 <label class="validation-message" th:errors="*{titulo}"></label>
                             </div>
@@ -49,7 +53,7 @@
                         </div>
 
                         <!-- Campo de Status com validação -->
-                        <div class="form-group col-3">
+                        <div class="form-group col-4">
 
                             <label for="nome" class="lblCliente">STATUS DO CHAMADO:</label>
                             <select class="form-control" th:field="*{status}">
@@ -58,7 +62,7 @@
                         </div>
 
                         <!-- Campo de prioridade com validação -->
-                        <div class="form-group col-3">
+                        <div class="form-group col-4">
                             <label for="nome" class="lblCliente">PRIORIDADE DO CHAMADO:</label>
                             <select name="" id="" class="form-control" th:field="*{prioridade}">
                                 <option th:each="prioridade : ${prioridade}" th:text="${prioridade}" th:value="${prioridade}"></option>
@@ -66,7 +70,7 @@
                         </div>
 
                         <!-- Campo de observacao com validação -->
-                        <div class="form-group col-3">
+                        <div class="form-group col-4">
                             <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${#fields.hasErrors('observacao')}">
                                 <label class="validation-message" th:errors="*{observacao}"></label>
                             </div>
@@ -76,7 +80,7 @@
                         </div>
 
                         <!-- Campo de tecnicos com validação -->
-                        <div class="form-group col-3">
+                        <div class="form-group col-4">
                             <label for="nome" class="lblCliente">SEECIONAR O TÉCNICO RESPONSAVEL:</label>
                             <select class="form-control" th:field="*{tecnico}">
                                 <option th:each="tecs : ${tecnicos}" th:text="${tecs.nome}" th:value="${tecs.id}"></option>
@@ -100,6 +104,7 @@
 <!-- endinject -->
 <!-- Custom js for this page-->
 <script src="/js/dashboard.js"></script>
+<script src="/js/datatables.min.js"></script>
 <!-- End custom js for this page-->
 
 

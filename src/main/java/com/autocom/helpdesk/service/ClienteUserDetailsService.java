@@ -1,5 +1,7 @@
 package com.autocom.helpdesk.service;
 
+import com.autocom.helpdesk.TratamentoExep.EmailDuplicadoException;
+import com.autocom.helpdesk.TratamentoExep.NomeDuplicadoException;
 import com.autocom.helpdesk.model.Cliente;
 import com.autocom.helpdesk.model.ClienteUserDetailsImpl;
 import com.autocom.helpdesk.repository.ClienteRepository;
@@ -13,13 +15,13 @@ import org.springframework.stereotype.Service;
 public class ClienteUserDetailsService implements UserDetailsService {
 
     @Autowired
-    ClienteRepository clienteRepository;
+    private ClienteRepository clienteRepository;
 
-    //Usuario autenticado por email
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Cliente cliente = clienteRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("Usuario nao encontrado na base de dados"));
+                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado na base de dados"));
         return new ClienteUserDetailsImpl(cliente);
     }
 }
+

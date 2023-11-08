@@ -4,22 +4,22 @@
       <a class="navbar-brand brand-logo mr-5" th:href="@{/}"><img src="/images/autocompeqno.png" class="mr-2" alt="logo"/></a>
       <a class="navbar-brand brand-logo-mini" th:href="@{/}"><img src="/images/autocomlogin.jpg" alt="logo"/></a>
     </div>
-    <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-      <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-        <span class="icon-menu"></span>
-      </button>
-      <ul class="navbar-nav mr-lg-2">
+  <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+      <span class="icon-menu"></span>
+    </button>
+    <form id="search-form" th:action="@{/cliente/pesquisar-cliente}" method="get">
+      <ul class="navbar-nav mr-lg-5">
         <li class="nav-item nav-search d-lg-block">
           <div class="input-group">
-            <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
-              <span class="input-group-text" id="search">
-                <i class="icon-search"></i>
-              </span>
+            <input type="text" class="form-control" style="width: 400px;" name="nome" placeholder="Pesquisar Clientes" aria-label="search" aria-describedby="search" th:value="${termoPesquisa}">
+            <div class="input-group-append hover-cursor" id="navbar-search-button">
+              <button type="submit" class="btn btn-dark">Pesquisar</button>
             </div>
-            <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
           </div>
         </li>
       </ul>
+    </form>
       <!-- IMAGEM PERFIL -->
       <ul class="navbar-nav navbar-nav-right">
         <li class="nav-item nav-profile dropdown">
@@ -53,4 +53,17 @@
         <span class="icon-menu"></span>
       </button>
     </div>
+  <script>
+    function submitSearchForm() {
+        document.getElementById("search-form").submit();
+    }
+  </script>
+  <script>
+    document.getElementById("navbar-search-button").addEventListener("click", function() {
+      var searchTerm = document.getElementById("navbar-search-input").value;
+      // Aqui você pode adicionar a lógica para executar a pesquisa com o valor de searchTerm
+      // Por exemplo, você pode fazer uma solicitação Ajax para buscar os resultados e atualizar a tabela.
+      console.log("Termo de pesquisa: " + searchTerm);
+    });
+  </script>
   </nav>

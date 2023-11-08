@@ -22,7 +22,7 @@
                     <div class="col-md-12 grid-margin">
                         <div class="row">
                             <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                                <h3 class="font-weight-bold">Ultimos Contatos</h3>
+                                <h3 class="font-weight-bold">Clientes Encontrados na Pesquisa</h3>
                             </div>
                         </div>
                     </div>
@@ -32,40 +32,39 @@
                     <div class="col-md-12 grid-margin stretch-card">
                         <div class="card table-bg">
                             <div class="card-people mt-auto">
-                                <h4 class="m-4">E-mails Enviados</h4>
+                                <h4 class="m-4">Resultado da Pesquisa de Clientes Cadastrados no Sistema</h4>
                                 <table class="table table-striped">
                                     <thead class="thead-dark">
                                     <tr>
-                                        <th>ID</th>
-                                        <th>REMETENTE</th>
-                                        <th>NOME</th>
-                                        <th>TELEFONE</th>
-                                        <th>ASSUNTO</th>
-                                        <th>DATA DE ENVIO</th>
-                                        <th>STATUS</th>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">NOME</th>
+                                        <th scope="col">EMAIL</th>
+                                        <th scope="col">AÇÃO</th>
                                     </tr>
-                                    </thead >
+                                    </thead>
                                     <tbody>
-                                    <tr th:each="email : ${contatos}">
-                                        <td th:text="${email.emailId}"></td>
-                                        <td th:text="${email.emailFrom}"></td>
-                                        <td th:text="${email.ownrRef}"></td>
-                                        <td th:text="${email.telefone}"></td>
-                                        <td th:text="${email.subject}"></td>
-                                        <td th:text="${#temporals.format(email.sendDateEmail, 'dd MMMM yyyy')}"></td>
-                                        <td th:text="${email.statusEmail}"></td>
+                                    <tr th:each="cliente : ${ListaDeClientes}">
+                                        <td th:text="${cliente.id}"></td>
+                                        <td th:text="${cliente.nome}"></td>
+                                        <td th:text="${cliente.email}"></td>
+                                        <td>
+                                            <a class="btn btn-warning" th:href="@{/cliente/editar/{id}(id=${cliente.id})}">EDITAR</a>
+                                            <a class="btn btn-danger" th:href="@{/cliente/excluir/{id}(id=${cliente.id})}">Excluir</a>
+                                        </td>
+                                    </tr>
+                                    <!-- Exibir uma mensagem quando nenhum cliente corresponder à pesquisa -->
+                                    <tr th:if="${ListaDeClientes.isEmpty()}">
+                                        <td colspan="4">Nenhum cliente encontrado para a pesquisa: <b th:text="${termoPesquisa}"></b></td>
                                     </tr>
                                     </tbody>
                                 </table>
-                                <a href="/autocom/autocom" class="btn btn-dark">Voltar</a>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-12 grid-margin transparent">
+                        <!-- conteudo indefinido -->
+                    </div>
                 </div>
-                <div class="col-md-12 grid-margin transparent">
-                    <!-- Conteúdo adicional, se necessário -->
-                </div>
-
             </div>
         </div>
     </div>

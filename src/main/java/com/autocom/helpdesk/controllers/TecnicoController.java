@@ -1,10 +1,13 @@
 package com.autocom.helpdesk.controllers;
 
+import com.autocom.helpdesk.TratamentoExep.EmailDuplicadoException;
+import com.autocom.helpdesk.TratamentoExep.NomeDuplicadoException;
 import com.autocom.helpdesk.enums.Perfil;
 import com.autocom.helpdesk.model.Chamado;
 import com.autocom.helpdesk.model.Tecnico;
 import com.autocom.helpdesk.repository.ChamadoRepository;
 import com.autocom.helpdesk.repository.TecnicoRepository;
+import com.autocom.helpdesk.service.TecnicoService;
 import com.autocom.helpdesk.util.PasswordUtil;
 import com.autocom.helpdesk.util.UploadUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +31,9 @@ public class TecnicoController {
     private TecnicoRepository tecnicoRepository;
 
     @Autowired
+    private TecnicoService tecnicoService;
+
+    @Autowired
     private ChamadoRepository chamadoRepository;
 
     @GetMapping("/cadastro")
@@ -40,7 +46,7 @@ public class TecnicoController {
     }
 
     @PostMapping("/cadastro-tecnico")
-    public ModelAndView cadastro(@ModelAttribute @Valid Tecnico tecnico, BindingResult bindingResult, @RequestParam("file") MultipartFile imagem) {
+    public ModelAndView cadastroTecnico(@ModelAttribute @Valid Tecnico tecnico, BindingResult bindingResult, @RequestParam("file") MultipartFile imagem) {
         ModelAndView mv = new ModelAndView("tecnico/cadastro");
 
         if (bindingResult.hasErrors()) {
@@ -58,15 +64,21 @@ public class TecnicoController {
                 tecnico.setImagem(imagem.getOriginalFilename()); // Armazenando o caminho da imagem, e não a imagem
             }
             tecnico.setNome(tecnico.getNome().toUpperCase());
-            tecnicoRepository.save(tecnico);
+            tecnicoService.saveTecnico(tecnico);
             System.out.println("Salvo com sucesso: " + tecnico.getNome() + tecnico.getImagem());
             return home(1);
+        } catch (NomeDuplicadoException e) {
+            mv.addObject("msgErro", "Nome já em uso. Escolha um nome diferente.");
+            return mv;
+        } catch (EmailDuplicadoException e) {
+            mv.addObject("msgErro", "E-mail já em uso. Use um e-mail diferente.");
+            return mv;
         } catch (Exception e) {
-            mv.addObject("msgErro", e.getMessage());
-            System.out.println("Erro ao salvar: " + e.getMessage());
+            mv.addObject("msgErro", "Ocorreu um erro ao salvar o técnico. Tente novamente mais tarde.");
             return mv;
         }
     }
+
 
 
     @GetMapping("/list-tecnico")

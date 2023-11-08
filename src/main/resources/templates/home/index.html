@@ -93,19 +93,19 @@
                   <nav class="m-4">
                     <ul class="pagination">
                       <li class="page-item" th:classappend="${chamadosList.first ? 'disabled' : ''}">
-                        <a class="page-link" th:if="${!chamadosList.first}" th:href="@{/(page=1)}">First</a>
+                        <a class="page-link" th:if="${!chamadosList.first}" th:href="@{/autocom/autocom(page=1)}">First</a>
                       </li>
                       <li class="page-item" th:classappend="${chamadosList.first ? 'disabled' : ''}">
-                        <a class="page-link" th:if="${!chamadosList.first}" th:href="@{/(page=${chamadosList.number - 1})}">Previous</a>
+                        <a class="page-link" th:if="${!chamadosList.first}" th:href="@{/autocom/autocom(page=${chamadosList.number - 1})}">Previous</a>
                       </li>
                       <li class="page-item" th:each="i : ${#numbers.sequence(1, chamadosList.totalPages)}" th:classappend="${i == chamadosList.number + 1 ? 'active' : ''}">
-                        <a class="page-link" th:text="${i}" th:href="@{/(page=${i})}"></a>
+                        <a class="page-link" th:text="${i}" th:href="@{/autocom/autocom(page=${i})}"></a>
                       </li>
                       <li class="page-item" th:classappend="${chamadosList.last ? 'disabled' : ''}">
-                        <a class="page-link" th:if="${!chamadosList.last}" th:href="@{/(page=${chamadosList.number + 1})}">Next</a>
+                        <a class="page-link" th:if="${!chamadosList.last}" th:href="@{/autocom/autocom(page=${chamadosList.number + 1})}">Next</a>
                       </li>
                       <li class="page-item" th:classappend="${chamadosList.last ? 'disabled' : ''}">
-                        <a class="page-link" th:if="${!chamadosList.last}" th:href="@{/(page=${chamadosList.totalPages})}">Last</a>
+                        <a class="page-link" th:if="${!chamadosList.last}" th:href="@{/autocom/autocom(page=${chamadosList.totalPages})}">Last</a>
                       </li>
                     </ul>
                   </nav>

@@ -5,6 +5,7 @@ import com.autocom.helpdesk.enums.Perfil;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @MappedSuperclass
@@ -12,14 +13,22 @@ public abstract class Pessoa implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @NotNull (message = "CAMPO OBRIGATORIO")
+
+    @NotNull(message = "Campo obrigatório")
+    @Size(min = 2, max = 50, message = "O nome deve ter entre 2 e 50 caracteres")
     private String nome;
-    @Email
+
+    @Email(message = "Deve ser um endereço de e-mail válido")
+    @NotNull(message = "Campo obrigatório")
     private String email;
+
+    @NotNull(message = "Campo obrigatório")
     private String senha;
+
     private String imagem;
+
     private Perfil perfil;
 
     public Pessoa(){}

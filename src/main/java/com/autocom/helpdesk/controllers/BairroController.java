@@ -1,10 +1,12 @@
 package com.autocom.helpdesk.controllers;
 
+import com.autocom.helpdesk.TratamentoExep.NomeDuplicadoException;
 import com.autocom.helpdesk.enums.Perfil;
 import com.autocom.helpdesk.model.Bairro;
 import com.autocom.helpdesk.model.Cliente;
 import com.autocom.helpdesk.model.Tecnico;
 import com.autocom.helpdesk.repository.BairroRepository;
+import com.autocom.helpdesk.service.BairroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -21,7 +23,10 @@ import javax.validation.Valid;
 public class BairroController {
 
     @Autowired
-    BairroRepository bairroRepository;
+    private BairroRepository bairroRepository;
+
+    @Autowired
+    private BairroService bairroService;
 
     @GetMapping("/cadastro")
     public ModelAndView cadastrobairro(Bairro bairro){
@@ -39,8 +44,14 @@ public class BairroController {
             mv.addObject("bairro", bairro);
         } else {
             bairro.setNomeBairro(bairro.getNomeBairro().toUpperCase());
-            mv.setViewName("redirect:/bairro/list-bairro");
-            bairroRepository.save(bairro);
+            try {
+                mv.setViewName("redirect:/bairro/list-bairro");
+                bairroService.saveBairro(bairro);
+            } catch (NomeDuplicadoException e) {
+                mv.setViewName("visita/cadastroBairro"); // Redireciona de volta ao formulário de cadastro
+                mv.addObject("bairro", bairro);
+                mv.addObject("msgErro", e.getMessage()); // Adiciona a mensagem de erro ao modelo
+            }
         }
 
         return mv;
