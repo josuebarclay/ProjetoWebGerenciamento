@@ -101,7 +101,8 @@ public class ClienteController {
     @GetMapping("/editar/{id}")
     public ModelAndView editar(@PathVariable("id") Integer id){
         ModelAndView mv = new ModelAndView("cliente/editar");
-        mv.addObject("perfils", Perfil.values());
+        Perfil[] perfilCliente = {Perfil.CLIENTE};
+        mv.addObject("perfils", perfilCliente);
         mv.addObject("usuario", clienteRepository.findById(id));
         return mv;
     }
@@ -109,6 +110,9 @@ public class ClienteController {
     @PostMapping("/editar-cliente")
     public ModelAndView editar(Cliente cliente){
         ModelAndView mv = new ModelAndView("cliente/editar");
+        // Criptografia de senha
+        String hasSenha = PasswordUtil.encoder(cliente.getSenha());
+        cliente.setSenha(hasSenha);
         cliente.setNome(cliente.getNome().toUpperCase());
         clienteRepository.save(cliente);
         return clientesList(1);

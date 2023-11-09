@@ -66,7 +66,7 @@ public class TecnicoController {
             tecnico.setNome(tecnico.getNome().toUpperCase());
             tecnicoService.saveTecnico(tecnico);
             System.out.println("Salvo com sucesso: " + tecnico.getNome() + tecnico.getImagem());
-            return home(1);
+            return tecnicolist();
         } catch (NomeDuplicadoException e) {
             mv.addObject("msgErro", "Nome já em uso. Escolha um nome diferente.");
             return mv;
@@ -75,7 +75,7 @@ public class TecnicoController {
             return mv;
         } catch (Exception e) {
             mv.addObject("msgErro", "Ocorreu um erro ao salvar o técnico. Tente novamente mais tarde.");
-            return mv;
+            return tecnicolist();
         }
     }
 

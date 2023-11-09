@@ -23,5 +23,4 @@ public class InjectConfig {
         }
         return false;
     }
-
 }

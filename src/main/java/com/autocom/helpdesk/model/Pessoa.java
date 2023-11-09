@@ -20,7 +20,6 @@ public abstract class Pessoa implements Serializable {
     @Size(min = 2, max = 50, message = "O nome deve ter entre 2 e 50 caracteres")
     private String nome;
 
-    @Email(message = "Deve ser um endereço de e-mail válido")
     @NotNull(message = "Campo obrigatório")
     private String email;
 

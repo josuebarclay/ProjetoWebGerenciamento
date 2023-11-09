@@ -1,7 +1,5 @@
 package com.autocom.helpdesk.service;
 
-import com.autocom.helpdesk.TratamentoExep.EmailDuplicadoException;
-import com.autocom.helpdesk.TratamentoExep.NomeDuplicadoException;
 import com.autocom.helpdesk.model.Cliente;
 import com.autocom.helpdesk.model.ClienteUserDetailsImpl;
 import com.autocom.helpdesk.repository.ClienteRepository;
