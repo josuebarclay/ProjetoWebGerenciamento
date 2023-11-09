@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -84,13 +85,19 @@ public class ClienteController {
     @GetMapping("/list-clientes")
     public ModelAndView clientesList(@RequestParam(defaultValue = "1") int page) {
         ModelAndView mv = new ModelAndView("cliente/lista-cliente");
-        Pageable pageReq = PageRequest.of((page - 1), 10);
+
+        // Defina a ordenação por nome do cliente em ordem crescente
+        Pageable pageReq = PageRequest.of((page - 1), 10, Sort.by(Sort.Order.asc("nome")));
+
         Page<Cliente> resultPages = clienteRepository.findAllCliente(pageReq);
         List<Cliente> clientes = resultPages.getContent();
+
         mv.addObject("clientesList", resultPages);
         mv.addObject("clientes", clientes);
+
         return mv;
     }
+
 
     @GetMapping("/excluir/{id}")
     public ModelAndView excluirCliente(@PathVariable("id") Integer id){

@@ -33,6 +33,8 @@
                         <div class="card table-bg">
                             <div class="card-people mt-auto">
                                 <h4 class="m-4">Clientes cadastrados no sistema</h4>
+                                <a href="/autocom/autocom" class="btn btn-dark">Voltar</a>
+                                <div class="table-responsive">
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
@@ -45,11 +47,16 @@
                                     <tr th:each="bairro : ${bairro}">
                                         <td th:text="${bairro.id}"></td>
                                         <td th:text="${bairro.nomeBairro}"></td>
-                                        <td><a class="btn btn-danger" th:href="@{excluir/{id}(id=${bairro.id})}">Excluir</a></td>
+                                        <td>
+                                            <a class="btn btn-danger" th:href="@{excluir/{id}(id=${bairro.id})}"
+                                               onclick="return confirm('Tem certeza de que deseja excluir este item?')">Excluir
+                                            </a>
+                                        </td>
+
                                     </tr>
                                     </tbody>
                                 </table>
-                                <a href="/autocom/autocom" class="btn btn-dark">Voltar</a>
+                            </div>
                             </div>
                         </div>
                     </div>

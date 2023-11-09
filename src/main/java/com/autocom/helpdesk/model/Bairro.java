@@ -16,7 +16,7 @@ public class Bairro implements Serializable {
     private Integer id;
 
     @NotNull (message = "O nome do bairro nao pode estar vazio")
-    @Size( min = 3 , max = 30,message = "o nome precisa ter mais de 5 caracteres")
+    @Size( min = 3 ,message = "o nome precisa ter mais de 5 caracteres")
     private String nomeBairro;
 
     @OneToMany(mappedBy = "bairro")

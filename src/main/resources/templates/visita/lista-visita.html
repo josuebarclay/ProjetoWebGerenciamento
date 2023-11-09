@@ -34,8 +34,9 @@
                         <div class="card table-bg">
                             <div class="card-people mt-auto">
                                 <h4 class="m-4">Visitas cadastradas no sistema</h4>
+                                <a href="/autocom/autocom" class="btn btn-dark">Voltar</a>
                                 <form th:action="@{/visita/buscar-por-mes}" method="get" class="form-inline">
-                                    <label label class="my-1 mr-2" for="mes">Selecione o Mês:</label>
+                                    <label label class="my-1 mr-2 mr-sm-2" for="mes">Selecione o Mês:</label>
                                     <select class="custom-select my-1 mr-sm-2"  id="mes" name="mes">
                                         <option value="1">Janeiro</option>
                                         <option value="2">Fevereiro</option>
@@ -58,6 +59,7 @@
                                     <div class="col-md-12 grid-margin stretch-card">
                                         <div class="card table-bg">
                                             <div class="card-people mt-auto">
+                                                <div class="table-responsive">
                                 <table class="table table-striped">
                                     <thead class="thead-dark">
                                     <tr>
@@ -78,6 +80,7 @@
                                     </tr>
                                     </tbody>
                                 </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

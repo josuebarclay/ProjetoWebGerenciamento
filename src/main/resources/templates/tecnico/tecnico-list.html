@@ -23,6 +23,7 @@
                         <div class="row">
                             <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                                 <h3 class="font-weight-bold">Listagem de Técnicos</h3>
+                                <a href="/autocom/autocom" class="btn btn-dark">Voltar</a>
                             </div>
                         </div>
                     </div>
@@ -33,8 +34,9 @@
                         <div class="card table-bg">
                             <div class="card-people mt-auto">
                                 <h4 class="m-4">Técnicos cadastrados no sistema</h4>
+                                <div class="table-responsive">
                                 <table class="table table-striped">
-                                    <thead>
+                                    <thead class="thead-dark">
                                     <tr>
                                         <th scope="col">ID</th>
                                         <th scope="col">NOME</th>
@@ -48,10 +50,15 @@
                                         <td th:text="${tecs.nome}"></td>
                                         <td th:text="${tecs.email}"></td>
                                         <td><a class="btn btn-warning" th:href="@{editar/{id}(id=${tecs.id})}">EDITAR</a>
-                                            <a class="btn btn-danger" th:href="@{excluir/{id}(id=${tecs.id})}">Excluir</a></td>
+<!--                                            <a class="btn btn-danger" th:href="@{excluir/{id}(id=${tecs.id})}">Excluir</a></td>-->
+                                            <a class="btn btn-danger" th:href="@{excluir/{id}(id=${tecs.id})}"
+                                               onclick="return confirm('Tem certeza de que deseja excluir este item?')">Excluir
+                                            </a>
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -64,5 +71,17 @@
         </div>
     </div>
 </div>
+<!-- plugins:js -->
+<script src="/vendors/js/vendor.bundle.base.js"></script>
+<!-- End plugin js for this page -->
+<!-- inject:js -->
+<script src="/js/off-canvas.js"></script>
+<script src="/js/template.js"></script>
+<script src="/js/hoverable-collapse.js"></script>
+<!-- endinject -->
+<!-- Custom js for this page-->
+<script src="/js/dashboard.js"></script>
+<script src="/js/datatables.min.js"></script>
+<!-- End custom js for this page-->
 </body>
 </html>

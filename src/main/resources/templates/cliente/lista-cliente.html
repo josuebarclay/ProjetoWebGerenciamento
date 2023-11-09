@@ -23,6 +23,7 @@
                         <div class="row">
                             <div class="col-12 col-xl-8 mb-4 mb-xl-0">
                                 <h3 class="font-weight-bold">Listagem de Clientes</h3>
+                                <a href="/autocom/autocom" class="btn btn-dark">Voltar</a>
                             </div>
                         </div>
                     </div>
@@ -33,6 +34,7 @@
                         <div class="card table-bg">
                             <div class="card-people mt-auto">
                                 <h4 class="m-4">Clientes cadastrados no sistema</h4>
+                                <div class="table-responsive">
                                 <table class="table table-striped">
                                     <thead class="thead-dark">
                                     <tr>
@@ -48,7 +50,12 @@
                                         <td th:text="${cliente.nome}"></td>
                                         <td th:text="${cliente.email}"></td>
                                         <td><a class="btn btn-warning" th:href="@{editar/{id}(id=${cliente.id})}">EDITAR</a>
-                                            <a class="btn btn-danger" th:href="@{excluir/{id}(id=${cliente.id})}">Excluir</a></td>
+<!--                                            <a class="btn btn-danger" th:href="@{excluir/{id}(id=${cliente.id})}">Excluir</a></td>-->
+
+                                            <a class="btn btn-danger" th:href="@{excluir/{id}(id=${cliente.id})}"
+                                               onclick="return confirm('Tem certeza de que deseja excluir este item?')">Excluir
+                                            </a>
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -72,6 +79,7 @@
                                         </li>
                                     </ul>
                                 </nav>
+                                </div>
                             </div>
                         </div>
                     </div>

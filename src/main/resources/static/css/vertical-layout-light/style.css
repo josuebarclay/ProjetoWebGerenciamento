@@ -29873,6 +29873,13 @@ div.tagsinput span.tag a {
     display: flex;
     margin-top: 0.5rem;
   }
+  /* Adicione as regras de estilo para o campo de pesquisa e o botão aqui */
+  .navbar .form-inline .form-group {
+    width: 50%; /* Define a largura desejada para o campo de pesquisa */
+  }
+  .navbar .form-inline button {
+    margin-left: 5px; /* Define a margem entre o campo de pesquisa e o botão */
+  }
 }
 
 @media (max-width: 480px) {
@@ -29883,6 +29890,7 @@ div.tagsinput span.tag a {
     padding-top: 0px;
   }
 }
+
 
 /* Layouts */
 @media (min-width: 992px) {

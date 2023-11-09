@@ -22,7 +22,9 @@
                     <div class="col-md-12 grid-margin">
                         <div class="row">
                             <div class="col-12 col-xl-8 mb-4 mb-xl-0">
-                                <h3 class="font-weight-bold">Detalhamento</h3>
+                                <h3 class="font-weight-bold">Detalhamento Da Visita</h3>
+                                <a th:href="@{/autocom/autocom}" class="btn btn-dark">Voltar </a>
+
                             </div>
                         </div>
                     </div>
@@ -34,7 +36,7 @@
                         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
 
                         <!-- Dados do Visitante -->
-                        <div class="form-group col-4">
+                        <div class="form-group col-12 col-md-4 col-sm-12">
                             <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('nomeVisitante')}" >
                                 <span class="validation-message" th:errors="*{nomeVisitante}"></span>
                             </div>
@@ -44,7 +46,7 @@
                         </div>
 
                         <!-- Dados do NOME EMPRESA -->
-                        <div class="form-group col-4">
+                        <div class="form-group col-12 col-md-4 col-sm-12">
                             <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('nomeEmpresa')}" >
                                 <span class="validation-message" th:errors="*{nomeEmpresa}"></span>
                             </div>
@@ -54,7 +56,7 @@
                         </div>
 
                         <!-- Dados do ENDEREÇO -->
-                        <div class="form-group col-4">
+                        <div class="form-group col-12 col-md-4 col-sm-12">
                             <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('endereco')}" >
                                 <span class="validation-message" th:errors="*{endereco}"></span>
                             </div>
@@ -64,7 +66,7 @@
                         </div>
 
                         <!-- Dados do BAIRRO -->
-                        <div class="form-group col-4">
+                        <div class="form-group col-12 col-md-4 col-sm-12">
                             <label class="lblCliente">BAIRRO</label>
                             <select class="form-control" th:field="*{bairro}">
                                 <option th:each="bairro : ${listaBairro}" th:value="${bairro.id}" th:text="${bairro.nomeBairro}"></option>
@@ -72,7 +74,7 @@
                         </div>
 
                         <!-- Dados do CONTATO -->
-                        <div class="form-group col-4">
+                        <div class="form-group col-12 col-md-4 col-sm-12">
                             <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('contato')}" >
                                 <span class="validation-message" th:errors="*{contato}"></span>
                             </div>
@@ -82,7 +84,7 @@
                         </div>
 
                         <!-- Dados do TELEFONE -->
-                        <div class="form-group col-4">
+                        <div class="form-group col-12 col-md-4 col-sm-12">
                             <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('telefone')}" >
                                 <span class="validation-message" th:errors="*{telefone}"></span>
                             </div>
@@ -92,7 +94,7 @@
                         </div>
 
                         <!-- Dados do EMAIL -->
-                        <div class="form-group col-12">
+                        <div class="form-group col-12 col-md-4 col-sm-12">
                             <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('email')}" >
                                 <span class="validation-message" th:errors="*{email}"></span>
                             </div>
@@ -102,7 +104,7 @@
                         </div>
 
                         <!-- Dados do DESCRIÇÃO -->
-                        <div class="form-group col-8">
+                        <div class="form-group col-12 col-md-4 col-sm-12">
                             <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('informacao')}" >
                                 <span class="validation-message" th:errors="*{informacao}"></span>
                             </div>
@@ -113,7 +115,7 @@
 
                     <!-- Dados do SISTEMA -->
                     <div class="row">
-                        <div class="form-group col-4" >
+                        <div class="form-group col-12 col-md-4 col-sm-12" >
                             <label for="temSistema" class="lblCliente">TEM SISTEMA DE AUTOMAÇÃO:</label>
                             <select class="form-control" id="temSistema" name="temSistema" th:field="*{temSistema}">
                                 <option th:each="visita : ${sim}" th:value="${visita}" th:text="${visita}"></option>
@@ -121,41 +123,41 @@
                         </div>
 
                         <!-- Dados do MOTIVO -->
-                        <div class="form-group col-4">
+                        <div class="form-group col-12 col-md-4 col-sm-12">
                             <label for="motivo" class="lblCliente">MOTIVO:</label>
                             <input type="text" th:field="*{motivo}" class="form-control" autocomplete="off" id="motivo" placeholder="Motivo"
                                    onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('Automacao').focus(); }">
                         </div>
 
                         <!-- Dados do NOME DA EMPRESA  -->
-                        <div class="form-group col-4">
+                        <div class="form-group col-12 col-md-4 col-sm-12">
                             <label for="Automacao" class="lblCliente">NOME DA EMPRESA DE AUTOMAÇÃO:</label>
                             <input type="text" th:field="*{nomeEmpresaAutomacao}" class="form-control" autocomplete="off" id="Automacao" placeholder="Nome Empresa de Automação"
                                    onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('Sistema').focus(); }">
                         </div>
 
                         <!-- Dados do TIPO DO SISTEMA  -->
-                        <div class="form-group col-4">
+                        <div class="form-group col-12 col-md-4 col-sm-12">
                             <label for="tipoSistema" class="lblCliente">TIPO DO SISTEMA:</label>
                             <select class="form-control" id="tipoSistema" name="tipoSistema" th:field="*{tipoSistema}">
                                 <option th:each="tipo : ${tiposSistema}" th:value="${tipo}" th:text="${tipo}"></option>
                                 <option value="Outros">OUTROS</option>
                             </select>
                         </div>
-                        <div class="form-group col-4">
+                        <div class="form-group col-12 col-md-4 col-sm-12">
                             <label for="outrosTipoSistema" class="lblCliente">ESPECIFIQUE O TIPO:</label>
                             <input type="text" class="form-control" id="outrosTipoSistema" name="outrosTipoSistema" placeholder="Especifique o tipo" style="display: none;">
                         </div>
 
                         <!-- Dados do TEMPO DE SISTEMA -->
-                        <div class="form-group col-4">
+                        <div class="form-group col-12 col-md-4 col-sm-12">
                             <label for="tempodoSistema" class="lblCliente">QUANTO TEMPO TEM O SISTEMA:</label>
                             <input type="text" th:field="*{tempodoSistema}" class="form-control" autocomplete="off" id="tempodoSistema" placeholder="Há quanto tempo utiliza"
                                    onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('satisfacao').focus(); }">
                         </div>
 
                         <!-- Dados do SATISFAÇÃO -->
-                        <div class="form-group col-4">
+                        <div class="form-group col-12 col-md-4 col-sm-12">
                             <label for="satisfacao" class="lblCliente">SATISFAÇÃO COM O SISTEMA:</label>
                             <select class="form-control" id="satisfacao" name="satisfacao" th:field="*{satisfacao}">
                                 <option th:each="visita : ${sim}" th:value="${visita}" th:text="${visita}"></option>
@@ -163,7 +165,7 @@
                         </div>
 
                         <!-- Dados do TEM SUPORTE -->
-                        <div class="form-group col-4">
+                        <div class="form-group col-12 col-md-4 col-sm-12">
                             <label for="suporte" class="lblCliente">TEM SUPORTE?</label>
                             <select class="form-control" id="suporte" name="suporte" th:field="*{suporte}">
                                 <option th:each="visita : ${sim}" th:value="${visita}" th:text="${visita}"></option>
@@ -171,7 +173,7 @@
                         </div>
 
                         <!-- Dados do RECEBIMENTOS DO CARTAO -->
-                        <div class="form-group col-4">
+                        <div class="form-group col-12 col-md-4 col-sm-12">
                             <label for="cartao" class="lblCliente">POSSUI RECEBIMENTO DE CARTÃO:</label>
                             <select class="form-control" id="cartao" name="cartao" th:field="*{cartao}">
                                 <option th:each="visita : ${sim}" th:value="${visita}" th:text="${visita}"></option>
@@ -179,7 +181,7 @@
                         </div>
 
                         <!-- Dados do TIPO DE RECEBIMENTO -->
-                        <div class="form-group col-4">
+                        <div class="form-group col-12 col-md-4 col-sm-12">
                             <label for="recebimento" class="lblCliente">TIPO DO RECEBIMENTO:</label>
                             <input type="text" th:field="*{recebimento}" class="form-control" autocomplete="off" id="recebimento" placeholder="Qual tipo de recebimento? TEF, POS, outros"
                                    onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('dataRetorno').focus(); }">
@@ -187,7 +189,7 @@
 
 
                         <!-- Dados do STATUS VISITA -->
-                        <div class="form-group col-4">
+                        <div class="form-group col-12 col-md-4 col-sm-12">
                             <label for="statusVisita" class="lblCliente">STATUS DA VISITA:</label>
                             <select class="form-control" id="statusVisita" name="statusVisita" th:field="*{statusVisita}">
                                 <option th:each="visita : ${statusVisita}" th:value="${visita}" th:text="${visita}"
@@ -197,7 +199,6 @@
                     </div>
 
                     <button type="submit" class="btn btn-success btn-rounded mt-4">SALVAR INFORMAÇÕES</button>
-                    <a th:href="@{/autocom/autocom} class="btn btn-dark">Voltar</a>
                 </form>
             </div>
         </div>
@@ -231,6 +232,18 @@
     }
 });
 </script>
+        <!-- plugins:js -->
+        <script src="/vendors/js/vendor.bundle.base.js"></script>
+        <!-- End plugin js for this page -->
+        <!-- inject:js -->
+        <script src="/js/off-canvas.js"></script>
+        <script src="/js/template.js"></script>
+        <script src="/js/hoverable-collapse.js"></script>
+        <!-- endinject -->
+        <!-- Custom js for this page-->
+        <script src="/js/dashboard.js"></script>
+        <script src="/js/datatables.min.js"></script>
+        <!-- End custom js for this page-->
 
 </body>
 </html>

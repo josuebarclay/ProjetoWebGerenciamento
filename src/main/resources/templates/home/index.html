@@ -64,58 +64,45 @@
               <div class="card table-bg">
                 <div class="card-people mt-auto">
                   <h4 class="m-4">Últimos chamados inseridos</h4>
-                  <table class="table table-striped">
-                    <thead class="thead-dark">
-                    <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">DATA DE ABERTURA:</th>
-                      <th scope="col">CLIENTE:</th>
-                      <th scope="col">TITULO DO CHAMADO:</th>
-                      <th scope="col">PRIORIDADE</th>
-                      <th scope="col">STATUS</th>
-                      <th scope="col">FUNCIONARIO RESPONSÁVEL:</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="chamado : ${chamadosList}">
-                      <td th:text="${chamado.id}"></td>
-                      <td th:text="${#temporals.format(chamado.dataAbertura, 'dd MMMM yyyy')}"></td>
-                      <td th:text="${chamado.cliente.nome}"></td>
-                      <td th:text="${chamado.titulo}"></td>
-                      <td th:text="${chamado.prioridade}"></td>
-                      <td th:text="${chamado.status}"></td>
-                      <td th:text="${chamado.tecnico.nome}"></td>
-                    </tr>
-                    </tbody>
-                  </table>
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">DATA DE ABERTURA:</th>
+                        <th scope="col">CLIENTE:</th>
+                        <th scope="col">TITULO DO CHAMADO:</th>
+                        <th scope="col">PRIORIDADE</th>
+                        <th scope="col">STATUS</th>
+                        <th scope="col">FUNCIONARIO RESPONSÁVEL:</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr th:each="chamado : ${chamadosList}">
+                        <td th:text="${chamado.id}"></td>
+                        <td th:text="${#temporals.format(chamado.dataAbertura, 'dd MMMM yyyy')}"></td>
+                        <td th:text="${chamado.cliente.nome}"></td>
+                        <td th:text="${chamado.titulo}"></td>
+                        <td th:text="${chamado.prioridade}"></td>
+                        <td th:text="${chamado.status}"></td>
+                        <td th:text="${chamado.tecnico.nome}"></td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
 
                   <!-- paginação da tabela -->
                   <nav class="m-4">
-                    <ul class="pagination">
-                      <li class="page-item" th:classappend="${chamadosList.first ? 'disabled' : ''}">
-                        <a class="page-link" th:if="${!chamadosList.first}" th:href="@{/autocom/autocom(page=1)}">First</a>
-                      </li>
-                      <li class="page-item" th:classappend="${chamadosList.first ? 'disabled' : ''}">
-                        <a class="page-link" th:if="${!chamadosList.first}" th:href="@{/autocom/autocom(page=${chamadosList.number - 1})}">Previous</a>
-                      </li>
-                      <li class="page-item" th:each="i : ${#numbers.sequence(1, chamadosList.totalPages)}" th:classappend="${i == chamadosList.number + 1 ? 'active' : ''}">
-                        <a class="page-link" th:text="${i}" th:href="@{/autocom/autocom(page=${i})}"></a>
-                      </li>
-                      <li class="page-item" th:classappend="${chamadosList.last ? 'disabled' : ''}">
-                        <a class="page-link" th:if="${!chamadosList.last}" th:href="@{/autocom/autocom(page=${chamadosList.number + 1})}">Next</a>
-                      </li>
-                      <li class="page-item" th:classappend="${chamadosList.last ? 'disabled' : ''}">
-                        <a class="page-link" th:if="${!chamadosList.last}" th:href="@{/autocom/autocom(page=${chamadosList.totalPages})}">Last</a>
-                      </li>
-                    </ul>
+                    <!-- Seu código de paginação aqui -->
                   </nav>
                 </div>
               </div>
             </div>
             <div class="col-md-12 grid-margin transparent">
-             <!-- conteudo indefinido -->
+              <!-- conteúdo indefinido -->
             </div>
           </div>
+
           <!-- end content wrapper -->
         </div>
         <!-- partial:partials/_footer.html -->

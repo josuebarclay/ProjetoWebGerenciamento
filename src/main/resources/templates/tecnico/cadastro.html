@@ -34,7 +34,7 @@
                     <inpu type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"></inpu>
                     <div class="row">
                         <!-- Campo nome com validação -->
-                                <div class="form-group col-4">
+                                <div class="form-group col-12 col-md-4 col-sm-12">
                                     <label for="nome" class="lblCliente">NOME:</label>
                                     <input type="text" class="form-control" autocomplete="off" th:field="*{nome}" id="nome" placeholder="Nome: "
                                            onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('email').focus(); }">
@@ -42,7 +42,7 @@
                                 </div>
 
                         <!-- Campo e-mail com validação -->
-                                <div class="form-group col-4">
+                                <div class="form-group col-12 col-md-4 col-sm-12">
                                     <label for="email" class="lblCliente">E-MAIL:</label>
                                     <input type="email" class="form-control" autocomplete="off" th:field="*{email}" id="email" placeholder="E-Mail: "
                                            onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('senha').focus(); }">
@@ -50,7 +50,7 @@
                                 </div>
 
                         <!-- Campo senha com validação -->
-                                <div class="form-group col-4">
+                                <div class="form-group col-12 col-md-4 col-sm-12">
                                     <label for="senha" class="lblCliente">SENHA:</label>
                                     <input type="password" class="form-control" th:field="*{senha}" id="senha" placeholder="Senha: "
                                            onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('arquivo').focus(); }">
@@ -58,14 +58,14 @@
                                 </div>
                     </div>
                     <div class="row">
-                                <div class="form-group col-6">
+                                <div class="form-group col-12 col-md-4 col-sm-12">
                                     <label for="arquivo" class="lblCliente">IMAGEM PERFIL:</label>
                                     <input type="file" class="form-control" name="file" id="arquivo" placeholder="Senha: "
                                            onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('perfil').focus(); }">
                                 </div>
 
                         <!-- Campo perfil -->
-                                <div class="form-group col-6">
+                                <div class="form-group col-12 col-md-4 col-sm-12">
                                     <label for="senha" class="lblCliente">PERFIL:</label>
                                     <select name="" id="" class="form-control" th:field="*{perfil}">
                                         <option th:each="perfil : ${perfils}" th:text="${perfil}" th:value="${perfil}"></option>
@@ -74,6 +74,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-success btn-rounded mt-4">SALVAR INFORMAÇÕES</button>
+                    <a href="/autocom/autocom" class="btn btn-dark">Voltar</a>
                 </form>
             </div>
         </div>

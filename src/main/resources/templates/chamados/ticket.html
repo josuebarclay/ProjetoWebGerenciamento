@@ -30,8 +30,9 @@
 
                 <form method="post" th:action="@{/ticket/salvarTicket}" th:object="${tickets}" th:modelAttribute="tickets">
                     <div class="row">
-                            <!-- Nome do cliente -->
-                        <div class="form-group col-4">
+                        <!-- Nome do cliente -->
+                        <div class="form-group col-md-4 col-sm-12">
+                            <!-- Se você deseja que o campo de nome do cliente ocupe a largura total em telas pequenas, adicione a classe col-sm-12 -->
                             <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('cliente')}">
                                 <label class="validation-message" th:errors="*{cliente.id}"></label>
                             </div>
@@ -43,18 +44,16 @@
                         </div>
 
                         <!-- Campo de Título com validação -->
-                        <div class="form-group col-4">
+                        <div class="form-group col-md-4 col-sm-12">
                             <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${#fields.hasErrors('titulo')}">
                                 <label class="validation-message" th:errors="*{titulo}"></label>
                             </div>
                             <label for="nome" class="lblCliente">TÍTULO DO CHAMADO:</label>
-                            <input type="text" class="form-control" autocomplete="off" th:field="*{titulo}"  placeholder="Ex: Impressora com defeito"
-                                   onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('status').focus(); }"/>
+                            <input type="text" class="form-control" autocomplete="off" th:field="*{titulo}" placeholder="Ex: Impressora com defeito" onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('status').focus(); }"/>
                         </div>
 
                         <!-- Campo de Status com validação -->
-                        <div class="form-group col-4">
-
+                        <div class="form-group col-md-4 col-sm-12">
                             <label for="nome" class="lblCliente">STATUS DO CHAMADO:</label>
                             <select class="form-control" th:field="*{status}">
                                 <option th:each="statusTicket : ${statusChamados}" th:text="${statusTicket}" th:value="${statusTicket}"></option>
@@ -62,7 +61,7 @@
                         </div>
 
                         <!-- Campo de prioridade com validação -->
-                        <div class="form-group col-4">
+                        <div class="form-group col-md-4 col-sm-12">
                             <label for="nome" class="lblCliente">PRIORIDADE DO CHAMADO:</label>
                             <select name="" id="" class="form-control" th:field="*{prioridade}">
                                 <option th:each="prioridade : ${prioridade}" th:text="${prioridade}" th:value="${prioridade}"></option>
@@ -70,23 +69,23 @@
                         </div>
 
                         <!-- Campo de observacao com validação -->
-                        <div class="form-group col-4">
+                        <div class="form-group col-md-4 col-sm-12">
                             <div class="alert alert-danger alert-dismissible fade show" role="alert" th:if="${#fields.hasErrors('observacao')}">
                                 <label class="validation-message" th:errors="*{observacao}"></label>
                             </div>
                             <label for="nome" class="lblCliente">DESCRIÇÃO:</label>
-                            <input th:field="*{observacao}" type="text" class="form-control" autocomplete="off"  id="nome" placeholder="Ex: Lorem Ipsum"
-                                   onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('tecnico').focus(); }"/>
+                            <input th:field="*{observacao}" type="text" class="form-control" autocomplete="off" id="nome" placeholder="Ex: Lorem Ipsum" onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('tecnico').focus(); }"/>
                         </div>
 
-                        <!-- Campo de tecnicos com validação -->
-                        <div class="form-group col-4">
-                            <label for="nome" class="lblCliente">SEECIONAR O TÉCNICO RESPONSAVEL:</label>
+                        <!-- Campo de técnicos com validação -->
+                        <div class="form-group col-md-4 col-sm-12">
+                            <label for="nome" class="lblCliente">SELECIONAR O TÉCNICO RESPONSÁVEL:</label>
                             <select class="form-control" th:field="*{tecnico}">
                                 <option th:each="tecs : ${tecnicos}" th:text="${tecs.nome}" th:value="${tecs.id}"></option>
                             </select>
                         </div>
                     </div>
+
                     <button type="submit" class="btn btn-success btn-rounded mt-4">SALVAR INFORMAÇÕES</button>
                 </form>
             </div>

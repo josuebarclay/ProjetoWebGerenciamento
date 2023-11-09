@@ -5,22 +5,24 @@
       <a class="navbar-brand brand-logo-mini" th:href="@{/}"><img src="/images/autocomlogin.jpg" alt="logo"/></a>
     </div>
   <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
-    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-      <span class="icon-menu"></span>
-    </button>
-    <form id="search-form" th:action="@{/cliente/pesquisar-cliente}" method="get">
-      <ul class="navbar-nav mr-lg-5">
-        <li class="nav-item nav-search d-lg-block">
-          <div class="input-group">
-            <input type="text" class="form-control" style="width: 400px;" name="nome" placeholder="Pesquisar Clientes" aria-label="search" aria-describedby="search" th:value="${termoPesquisa}">
-            <div class="input-group-append hover-cursor" id="navbar-search-button">
-              <button type="submit" class="btn btn-dark">Pesquisar</button>
-            </div>
+    <div class="row">
+      <div class="col-md-12 d-flex align-items-center justify-content-end">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="icon-menu"></span>
+        </button>
+        <div class="row">
+          <div class="col-md-12 col-sm-12 d-flex align-items-center justify-content-end">
+            <form id="search-form" th:action="@{/cliente/pesquisar-cliente}" method="get" class="form-inline">
+              <div class="form-group mr-2">
+                <input type="text" class="form-control form-control-sm" id="navbar-search-input" name="nome" placeholder="Pesquisar Clientes" aria-label="search" aria-describedby="search" th:value="${termoPesquisa}">
+              </div>
+              <button type="submit" class="btn btn-dark btn-sm" id="navbar-search-button">Pesquisar</button>
+            </form>
           </div>
-        </li>
-      </ul>
-    </form>
-      <!-- IMAGEM PERFIL -->
+        </div>
+      </div>
+    </div>
+    <!-- IMAGEM PERFIL -->
       <ul class="navbar-nav navbar-nav-right">
         <li class="nav-item nav-profile dropdown">
           <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
