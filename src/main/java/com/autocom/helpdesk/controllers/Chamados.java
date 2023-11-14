@@ -1,5 +1,6 @@
 package com.autocom.helpdesk.controllers;
 
+import com.autocom.helpdesk.enums.Perfil;
 import com.autocom.helpdesk.enums.Prioridade;
 import com.autocom.helpdesk.enums.StatusTicket;
 import com.autocom.helpdesk.model.Chamado;
@@ -7,10 +8,12 @@ import com.autocom.helpdesk.model.Cliente;
 import com.autocom.helpdesk.repository.ChamadoRepository;
 import com.autocom.helpdesk.repository.ClienteRepository;
 import com.autocom.helpdesk.repository.TecnicoRepository;
+import com.autocom.helpdesk.util.PasswordUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;

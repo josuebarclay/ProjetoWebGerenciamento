@@ -7,7 +7,8 @@ public enum TipoSistema {
     MDFE("MDF-e"),
     MOBILE("Mobile"),
     DELIVERY("Delivery"),
-    PDV("PDV");
+    PDV("PDV"),
+    OUTROS("OUTROS");
 
     private String TipoSistema;
 

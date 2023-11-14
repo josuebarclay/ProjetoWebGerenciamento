@@ -32,7 +32,6 @@
                     <div class="row">
                         <!-- Nome do cliente -->
                         <div class="form-group col-md-4 col-sm-12">
-                            <!-- Se você deseja que o campo de nome do cliente ocupe a largura total em telas pequenas, adicione a classe col-sm-12 -->
                             <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('cliente')}">
                                 <label class="validation-message" th:errors="*{cliente.id}"></label>
                             </div>

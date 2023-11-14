@@ -24,9 +24,6 @@ public class Chamado implements Serializable {
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataAbertura = LocalDate.now();
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
-    private LocalDate dataFechamento;
-
     @NotEmpty(message = "CAMPO OBRIGATORIO")
     @Size( min = 10 , message = "o nome precisa ter mais de 5 caracteres")
     @Column(length = 1000)
@@ -50,7 +47,6 @@ public class Chamado implements Serializable {
         this.id = id;
         this.titulo = titulo;
         this.dataAbertura = dataAbertura;
-        this.dataFechamento = dataFechamento;
         this.observacao = observacao;
         this.prioridade = prioridade;
         this.status = statusTicket;
@@ -78,14 +74,6 @@ public class Chamado implements Serializable {
 
     public void setDataAbertura(LocalDate dataAbertura) {
         this.dataAbertura = dataAbertura;
-    }
-
-    public LocalDate getDataFechamento() {
-        return dataFechamento;
-    }
-
-    public void setDataFechamento(LocalDate dataFechamento) {
-        this.dataFechamento = dataFechamento;
     }
 
     public String getObservacao() {
@@ -135,7 +123,6 @@ public class Chamado implements Serializable {
                 "id=" + id +
                 ", titulo='" + titulo + '\'' +
                 ", dataAbertura=" + dataAbertura +
-                ", dataFechamento=" + dataFechamento +
                 ", observacao='" + observacao + '\'' +
                 ", prioridade=" + prioridade +
                 ", status=" + status +

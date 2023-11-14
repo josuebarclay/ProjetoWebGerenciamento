@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments/head :: headImports}"></head>
+<style>
+    .lblCliente{font-weight: bold;}
+</style>
+<body>
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav th:replace="~{fragments/navbar :: navbarImports}"></nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
+        <nav th:replace="~{fragments/sidebar :: sidebarImports}"></nav>
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+
+                <!-- cabeçalho boas vindas -->
+                <div class="row">
+                    <div class="col-md-12 grid-margin">
+                        <div class="row">
+                            <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                                <h3 class="font-weight-bold">Editar Status da Visita</h3>
+                                <a href="/autocom/autocom" class="btn btn-dark">Voltar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- conteúdo principal -->
+                <form th:action="@{/visita/editar-visita}" method="post" th:object="${visita}" enctype="multipart/form-data">
+                    <div class="row">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                        <input type="hidden" th:field="*{id}">
+
+                        <!-- Dados do STATUS VISITA -->
+                        <div class="form-group col-12 col-md-4 col-sm-12">
+                            <label for="statusVisita" class="lblCliente">STATUS DA VISITA:</label>
+                            <select class="form-control" id="statusVisita" name="statusVisita" th:field="*{statusVisita}">
+                                <option th:each="visita : ${statusVisita}" th:value="${visita}" th:text="${visita}"
+                                ></option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-rounded mt-4">SALVAR INFORMAÇÕES</button>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+</html>

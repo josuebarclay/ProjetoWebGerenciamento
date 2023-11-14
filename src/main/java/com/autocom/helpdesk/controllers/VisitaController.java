@@ -1,8 +1,11 @@
 package com.autocom.helpdesk.controllers;
 
+import com.autocom.helpdesk.enums.Perfil;
 import com.autocom.helpdesk.enums.SimNao;
 import com.autocom.helpdesk.enums.StatusVisita;
 import com.autocom.helpdesk.enums.TipoSistema;
+import com.autocom.helpdesk.model.Chamado;
+import com.autocom.helpdesk.model.Tecnico;
 import com.autocom.helpdesk.model.Visita;
 import com.autocom.helpdesk.repository.BairroRepository;
 import com.autocom.helpdesk.repository.VisitaRepository;
@@ -25,7 +28,6 @@ public class VisitaController {
 
     @Autowired
     private VisitaRepository visitaRepository;
-
 
 
     @Autowired
@@ -69,12 +71,6 @@ public class VisitaController {
         return new ModelAndView("redirect:/visita/list-visita");
     }
 
-    @ModelAttribute("tiposSistema")
-    public TipoSistema[] getTiposSistema() {
-        return TipoSistema.values();
-    }
-
-
     @GetMapping("/list-visita")
     public ModelAndView visitaList(){
         ModelAndView mv = new ModelAndView("visita/lista-visita");
@@ -104,6 +100,24 @@ public class VisitaController {
         return "relatorio/retorno-visita"; // Redireciona para a página de relatório na pasta "relatorio"
     }
 
+    @GetMapping("/editar/{id}")
+    public ModelAndView editar(@PathVariable("id") Integer id) {
+        ModelAndView mv = new ModelAndView("visita/editar-visita");
+        mv.addObject("statusVisita", StatusVisita.values());
+        Visita visita = visitaRepository.findById(id).orElse(null);
+        mv.addObject("visita", visita);
+        return mv;
+    }
+
+    @PostMapping("/editar-visita")
+    public ModelAndView editar(Visita visita) {
+        ModelAndView mv = new ModelAndView("visita/editar-visita");
+        // Recupere a visita original do banco de dados pelo ID
+        Visita visitaOriginal = visitaRepository.findById(visita.getId()).orElse(null);
+            visitaOriginal.setStatusVisita(visita.getStatusVisita());
+            visitaRepository.save(visitaOriginal);
+        return visitaList();
+    }
 
 
 }

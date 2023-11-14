@@ -12,7 +12,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
-import static org.hibernate.criterion.Restrictions.and;
 
 @Configuration
 @EnableWebSecurity
@@ -27,6 +26,7 @@ public class WebConfigureProject extends WebSecurityConfigurerAdapter {
     //recuruso que vai permitir e bloquear na aplicação
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
 
         http.authorizeRequests()
                 .antMatchers("/").permitAll()

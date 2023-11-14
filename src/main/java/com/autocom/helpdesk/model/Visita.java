@@ -51,16 +51,13 @@ public class Visita implements Serializable {
     private SimNao temSistema;
     private String motivo;
     private String nomeEmpresaAutomacao;
-
-    @NotNull(message = "CAMPO OBRIGATORIO")
     private TipoSistema tipoSistema;
+    private String especifique;
     private String tempodoSistema;
     private SimNao satisfacao; //satisfeito com o sistema
     private SimNao suporte; //satisfeito com o suporte
     private SimNao cartao;
     private String recebimento; //qual o tipo do recebimento
-
-
     private LocalDate dataRetorno30Dias = LocalDate.now();
     private StatusVisita statusVisita ;
 
@@ -70,7 +67,7 @@ public class Visita implements Serializable {
 
     public Visita(){}
 
-    public Visita(Integer id, LocalDate dataVisita, String nomeVisitante, String nomeEmpresa, String endereco, String contato, String telefone, String email, String informacao, SimNao temSistema, String motivo, String nomeEmpresaAutomacao, TipoSistema tipoSistema, String tempodoSistema, SimNao satisfacao, SimNao suporte, SimNao cartao, String recebimento, LocalDate dataRetorno30Dias, StatusVisita statusVisita, Bairro bairro) {
+    public Visita(Integer id, LocalDate dataVisita, String nomeVisitante, String nomeEmpresa, String endereco, String contato, String telefone, String email, String informacao, SimNao temSistema, String motivo, String nomeEmpresaAutomacao, TipoSistema tipoSistema,String especifique, String tempodoSistema, SimNao satisfacao, SimNao suporte, SimNao cartao, String recebimento, LocalDate dataRetorno30Dias, StatusVisita statusVisita, Bairro bairro) {
         this.id = id;
         this.dataVisita = dataVisita;
         this.nomeVisitante = nomeVisitante;
@@ -85,6 +82,7 @@ public class Visita implements Serializable {
         this.nomeEmpresaAutomacao = nomeEmpresaAutomacao;
         this.tipoSistema = tipoSistema;
         this.tempodoSistema = tempodoSistema;
+        this.especifique = especifique;
         this.satisfacao = satisfacao;
         this.suporte = suporte;
         this.cartao = cartao;
@@ -260,6 +258,14 @@ public class Visita implements Serializable {
 
     public void setDataRetorno30Dias(LocalDate dataRetorno30Dias) {
         this.dataRetorno30Dias = dataRetorno30Dias;
+    }
+
+    public String getEspecifique() {
+        return especifique;
+    }
+
+    public void setEspecifique(String especifique) {
+        this.especifique = especifique;
     }
 }
 

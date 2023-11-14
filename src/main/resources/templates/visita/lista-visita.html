@@ -67,6 +67,7 @@
                                         <th scope="col">DATA DA VISITA</th>
                                         <th scope="col">VISITA</th>
                                         <th scope="col">NOME DA EMPRESA</th>
+                                        <th scope="col">STAUS</th>
                                         <th scope="col">AÇÃO</th>
                                     </tr>
                                     </thead>
@@ -76,7 +77,9 @@
                                         <td th:text="${#temporals.format(visita.dataVisita, 'dd MMMM yyyy')}"></td>
                                         <td th:text="${visita.nomeVisitante}"></td>
                                         <td th:text="${visita.nomeEmpresa}"></td>
-                                        <td><a class="btn btn-dark" th:href="@{visualizar/{id}(id=${visita.id})}">VISUALIZAR</a></td>
+                                        <td th:text="${visita.statusVisita}"></td>
+                                        <td><a class="btn btn-dark" th:href="@{visualizar/{id}(id=${visita.id})}">VISUALIZAR</a>
+                                        <a class="btn btn-success" th:href="@{editar/{id}(id=${visita.id})}">STATUS</a></td>
                                     </tr>
                                     </tbody>
                                 </table>

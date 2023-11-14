@@ -141,12 +141,17 @@
                             <label for="tipoSistema" class="lblCliente">TIPO DO SISTEMA:</label>
                             <select class="form-control" id="tipoSistema" name="tipoSistema" th:field="*{tipoSistema}">
                                 <option th:each="tipo : ${tiposSistema}" th:value="${tipo}" th:text="${tipo}"></option>
-                                <option value="Outros">OUTROS</option>
                             </select>
                         </div>
+
+                        <!-- Dados do Especifique -->
                         <div class="form-group col-12 col-md-4 col-sm-12">
-                            <label for="outrosTipoSistema" class="lblCliente">ESPECIFIQUE O TIPO:</label>
-                            <input type="text" class="form-control" id="outrosTipoSistema" name="outrosTipoSistema" placeholder="Especifique o tipo" style="display: none;">
+                            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('especifique')}" >
+                                <span class="validation-message" th:errors="*{especifique}"></span>
+                            </div>
+                            <label for="especifique" class="lblCliente">ESPECIFIQUE:</label>
+                            <input type="text" th:field="*{especifique}" class="form-control" autocomplete="off" id="especifique" placeholder="Especifique"
+                                   onkeydown="if (event.key === 'Enter') { event.preventDefault(); document.getElementById('tempodoSistema').focus(); }">
                         </div>
 
                         <!-- Dados do TEMPO DE SISTEMA -->
@@ -219,17 +224,6 @@
                 }
             }
         });
-    });
-
-    document.getElementById("tipoSistema").addEventListener("change", function() {
-    var selectedOption = this.options[this.selectedIndex].value;
-    var outrosTipoSistemaField = document.getElementById("outrosTipoSistema");
-
-    if (selectedOption === "Outros") {
-        outrosTipoSistemaField.style.display = "block";
-    } else {
-        outrosTipoSistemaField.style.display = "none";
-    }
 });
 </script>
         <!-- plugins:js -->
