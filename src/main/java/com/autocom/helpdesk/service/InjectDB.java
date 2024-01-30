@@ -26,13 +26,13 @@ public class InjectDB {
 
     public void injectDB() {
         Tecnico tecnico1 = new Tecnico(null, "SUPERVISOR",
-                "supervisor@gmail.com", PasswordUtil.encoder("123"), null, Perfil.TECNICO, null);
+                "supervisorteste@gmail.com", PasswordUtil.encoder("hello"), null, Perfil.TECNICO, null);
         tecnicoRepository.saveAll(Arrays.asList(tecnico1));
     }
 
     public void injectDBTest() {
         Tecnico tecnico1 = new Tecnico(null, "SUPERVISOR",
-                "supervisor@gmail.com", PasswordUtil.encoder("123"), null, Perfil.TECNICO, null);
+                "supervisorteste@gmail.com", PasswordUtil.encoder("hello"), null, Perfil.TECNICO, null);
     
         tecnicoRepository.saveAll(Arrays.asList(tecnico1));
     }
